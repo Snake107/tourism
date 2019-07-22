@@ -10,13 +10,13 @@ public class Coupon {
     /**
      * 折扣券名字
      */
-    @Column(name = "" discount_coupon"")
+    @Column(name = " discount_coupon")
     private String discountCoupon;
 
     /**
      * 折扣券价格
      */
-    @Column(name = "" discount_coupon_money"")
+    @Column(name = " discount_coupon_money")
     private Integer discountCouponMoney;
 
     private Integer flag;
