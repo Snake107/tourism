@@ -3,7 +3,7 @@ package com.ssm.pojo;
 import javax.persistence.*;
 
 @Table(name = "t_collection")
-public class Collection {
+public class TCollection {
     /**
      * id
      */
