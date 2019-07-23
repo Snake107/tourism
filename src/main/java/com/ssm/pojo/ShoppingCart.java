@@ -11,7 +11,7 @@ public class ShoppingCart {
     private Integer id;
 
     /**
-     *  用户id
+     * 用户id
      */
     @Column(name = "user_id")
     private Integer userId;
@@ -77,18 +77,18 @@ public class ShoppingCart {
     }
 
     /**
-     * 获取 用户id
+     * 获取用户id
      *
-     * @return user_id -  用户id
+     * @return user_id - 用户id
      */
     public Integer getUserId() {
         return userId;
     }
 
     /**
-     * 设置 用户id
+     * 设置用户id
      *
-     * @param userId  用户id
+     * @param userId 用户id
      */
     public void setUserId(Integer userId) {
         this.userId = userId;

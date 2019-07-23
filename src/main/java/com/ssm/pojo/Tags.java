@@ -8,7 +8,7 @@ public class Tags {
     private Integer id;
 
     /**
-     * 景点标签名称
+     * 标签名称
      */
     @Column(name = "tag_name")
     private String tagName;
@@ -30,18 +30,18 @@ public class Tags {
     }
 
     /**
-     * 获取景点标签名称
+     * 获取标签名称
      *
-     * @return tag_name - 景点标签名称
+     * @return tag_name - 标签名称
      */
     public String getTagName() {
         return tagName;
     }
 
     /**
-     * 设置景点标签名称
+     * 设置标签名称
      *
-     * @param tagName 景点标签名称
+     * @param tagName 标签名称
      */
     public void setTagName(String tagName) {
         this.tagName = tagName == null ? null : tagName.trim();

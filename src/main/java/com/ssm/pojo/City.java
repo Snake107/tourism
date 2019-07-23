@@ -14,14 +14,14 @@ public class City {
     private String country;
 
     /**
-     * 城市
-     */
-    private String city;
-
-    /**
      * 省份/州
      */
     private String province;
+
+    /**
+     * 城市
+     */
+    private String city;
 
     /**
      * 图片
@@ -73,24 +73,6 @@ public class City {
     }
 
     /**
-     * 获取城市
-     *
-     * @return city - 城市
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * 设置城市
-     *
-     * @param city 城市
-     */
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
-    }
-
-    /**
      * 获取省份/州
      *
      * @return province - 省份/州
@@ -106,6 +88,24 @@ public class City {
      */
     public void setProvince(String province) {
         this.province = province == null ? null : province.trim();
+    }
+
+    /**
+     * 获取城市
+     *
+     * @return city - 城市
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * 设置城市
+     *
+     * @param city 城市
+     */
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
     }
 
     /**

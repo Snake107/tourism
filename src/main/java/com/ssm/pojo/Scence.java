@@ -18,19 +18,10 @@ public class Scence {
     private String scenceName;
 
     /**
-     * 国家
+     * 城市id
      */
-    private String country;
-
-    /**
-     * 省份/州
-     */
-    private String province;
-
-    /**
-     * 城市
-     */
-    private String city;
+    @Column(name = "city_id")
+    private Integer cityId;
 
     /**
      * 照片
@@ -74,6 +65,18 @@ public class Scence {
      * 点击量
      */
     private Integer views;
+
+    /**
+     * 行程表id
+     */
+    @Column(name = "schedule_id")
+    private Integer scheduleId;
+
+    /**
+     * 旅行社id
+     */
+    @Column(name = "travel_agency_id")
+    private Integer travelAgencyId;
 
     private Integer flag;
 
@@ -119,57 +122,21 @@ public class Scence {
     }
 
     /**
-     * 获取国家
+     * 获取城市id
      *
-     * @return country - 国家
+     * @return city_id - 城市id
      */
-    public String getCountry() {
-        return country;
+    public Integer getCityId() {
+        return cityId;
     }
 
     /**
-     * 设置国家
+     * 设置城市id
      *
-     * @param country 国家
+     * @param cityId 城市id
      */
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
-    }
-
-    /**
-     * 获取省份/州
-     *
-     * @return province - 省份/州
-     */
-    public String getProvince() {
-        return province;
-    }
-
-    /**
-     * 设置省份/州
-     *
-     * @param province 省份/州
-     */
-    public void setProvince(String province) {
-        this.province = province == null ? null : province.trim();
-    }
-
-    /**
-     * 获取城市
-     *
-     * @return city - 城市
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * 设置城市
-     *
-     * @param city 城市
-     */
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
     /**
@@ -314,6 +281,42 @@ public class Scence {
      */
     public void setViews(Integer views) {
         this.views = views;
+    }
+
+    /**
+     * 获取行程表id
+     *
+     * @return schedule_id - 行程表id
+     */
+    public Integer getScheduleId() {
+        return scheduleId;
+    }
+
+    /**
+     * 设置行程表id
+     *
+     * @param scheduleId 行程表id
+     */
+    public void setScheduleId(Integer scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
+    /**
+     * 获取旅行社id
+     *
+     * @return travel_agency_id - 旅行社id
+     */
+    public Integer getTravelAgencyId() {
+        return travelAgencyId;
+    }
+
+    /**
+     * 设置旅行社id
+     *
+     * @param travelAgencyId 旅行社id
+     */
+    public void setTravelAgencyId(Integer travelAgencyId) {
+        this.travelAgencyId = travelAgencyId;
     }
 
     /**

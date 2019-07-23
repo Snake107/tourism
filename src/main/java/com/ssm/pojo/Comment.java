@@ -1,5 +1,6 @@
 package com.ssm.pojo;
 
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_comment")
@@ -11,6 +12,12 @@ public class Comment {
     private Integer id;
 
     /**
+     * 商品类型，1景点2酒店3餐厅
+     */
+    @Column(name = "big_type")
+    private Integer bigType;
+
+    /**
      * 商品id
      */
     @Column(name = "commodity_id")
@@ -19,20 +26,20 @@ public class Comment {
     /**
      * 评论用户id
      */
-    @Column(name = "commodity_user_id")
-    private Integer commodityUserId;
-
-    /**
-     * 商品类型，1景点2酒店3餐厅
-     */
-    @Column(name = "commodity_type")
-    private Integer commodityType;
+    @Column(name = "user_id")
+    private Integer userId;
 
     /**
      * 父级评论
      */
     @Column(name = "parent_id")
     private Integer parentId;
+
+    /**
+     * 评论时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * 评分
@@ -65,6 +72,24 @@ public class Comment {
     }
 
     /**
+     * 获取商品类型，1景点2酒店3餐厅
+     *
+     * @return big_type - 商品类型，1景点2酒店3餐厅
+     */
+    public Integer getBigType() {
+        return bigType;
+    }
+
+    /**
+     * 设置商品类型，1景点2酒店3餐厅
+     *
+     * @param bigType 商品类型，1景点2酒店3餐厅
+     */
+    public void setBigType(Integer bigType) {
+        this.bigType = bigType;
+    }
+
+    /**
      * 获取商品id
      *
      * @return commodity_id - 商品id
@@ -85,37 +110,19 @@ public class Comment {
     /**
      * 获取评论用户id
      *
-     * @return commodity_user_id - 评论用户id
+     * @return user_id - 评论用户id
      */
-    public Integer getCommodityUserId() {
-        return commodityUserId;
+    public Integer getUserId() {
+        return userId;
     }
 
     /**
      * 设置评论用户id
      *
-     * @param commodityUserId 评论用户id
+     * @param userId 评论用户id
      */
-    public void setCommodityUserId(Integer commodityUserId) {
-        this.commodityUserId = commodityUserId;
-    }
-
-    /**
-     * 获取商品类型，1景点2酒店3餐厅
-     *
-     * @return commodity_type - 商品类型，1景点2酒店3餐厅
-     */
-    public Integer getCommodityType() {
-        return commodityType;
-    }
-
-    /**
-     * 设置商品类型，1景点2酒店3餐厅
-     *
-     * @param commodityType 商品类型，1景点2酒店3餐厅
-     */
-    public void setCommodityType(Integer commodityType) {
-        this.commodityType = commodityType;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     /**
@@ -134,6 +141,24 @@ public class Comment {
      */
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    /**
+     * 获取评论时间
+     *
+     * @return create_time - 评论时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置评论时间
+     *
+     * @param createTime 评论时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     /**

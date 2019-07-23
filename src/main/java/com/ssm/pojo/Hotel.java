@@ -8,6 +8,9 @@ public class Hotel {
     @Id
     private Integer id;
 
+    @Column(name = "city_id")
+    private Integer cityId;
+
     /**
      * 酒店名称
      */
@@ -15,24 +18,14 @@ public class Hotel {
     private String hotelName;
 
     /**
-     * 国家
-     */
-    private String country;
-
-    /**
-     * 省份/州
-     */
-    private String province;
-
-    /**
-     * 城市
-     */
-    private String city;
-
-    /**
      * 照片
      */
     private String picture;
+
+    /**
+     * 描述
+     */
+    private String description;
 
     /**
      * 价格
@@ -72,12 +65,13 @@ public class Hotel {
      */
     private Integer views;
 
-    private Integer flag;
-
     /**
-     * 描述
+     * 旅行社id
      */
-    private String description;
+    @Column(name = "travel_agency_id")
+    private Integer travelAgencyId;
+
+    private Integer flag;
 
     /**
      * @return id
@@ -91,6 +85,20 @@ public class Hotel {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return city_id
+     */
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    /**
+     * @param cityId
+     */
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
     /**
@@ -112,60 +120,6 @@ public class Hotel {
     }
 
     /**
-     * 获取国家
-     *
-     * @return country - 国家
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * 设置国家
-     *
-     * @param country 国家
-     */
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
-    }
-
-    /**
-     * 获取省份/州
-     *
-     * @return province - 省份/州
-     */
-    public String getProvince() {
-        return province;
-    }
-
-    /**
-     * 设置省份/州
-     *
-     * @param province 省份/州
-     */
-    public void setProvince(String province) {
-        this.province = province == null ? null : province.trim();
-    }
-
-    /**
-     * 获取城市
-     *
-     * @return city - 城市
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * 设置城市
-     *
-     * @param city 城市
-     */
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
-    }
-
-    /**
      * 获取照片
      *
      * @return picture - 照片
@@ -181,6 +135,24 @@ public class Hotel {
      */
     public void setPicture(String picture) {
         this.picture = picture == null ? null : picture.trim();
+    }
+
+    /**
+     * 获取描述
+     *
+     * @return description - 描述
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * 设置描述
+     *
+     * @param description 描述
+     */
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     /**
@@ -310,6 +282,24 @@ public class Hotel {
     }
 
     /**
+     * 获取旅行社id
+     *
+     * @return travel_agency_id - 旅行社id
+     */
+    public Integer getTravelAgencyId() {
+        return travelAgencyId;
+    }
+
+    /**
+     * 设置旅行社id
+     *
+     * @param travelAgencyId 旅行社id
+     */
+    public void setTravelAgencyId(Integer travelAgencyId) {
+        this.travelAgencyId = travelAgencyId;
+    }
+
+    /**
      * @return flag
      */
     public Integer getFlag() {
@@ -321,23 +311,5 @@ public class Hotel {
      */
     public void setFlag(Integer flag) {
         this.flag = flag;
-    }
-
-    /**
-     * 获取描述
-     *
-     * @return description - 描述
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * 设置描述
-     *
-     * @param description 描述
-     */
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 }

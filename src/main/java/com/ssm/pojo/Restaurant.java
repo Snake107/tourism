@@ -18,24 +18,15 @@ public class Restaurant {
     private String restaurantName;
 
     /**
-     * 国家
-     */
-    private String country;
-
-    /**
-     * 省份/州
-     */
-    private String province;
-
-    /**
-     * 城市
-     */
-    private String city;
-
-    /**
      * 照片
      */
     private String picture;
+
+    /**
+     * 城市id
+     */
+    @Column(name = "city_id")
+    private Integer cityId;
 
     /**
      * 价格
@@ -75,8 +66,17 @@ public class Restaurant {
      */
     private Integer views;
 
+    /**
+     * 旅游行程
+     */
     @Column(name = "program_id")
     private Integer programId;
+
+    /**
+     * 旅行社id
+     */
+    @Column(name = "travel_agency_id")
+    private Integer travelAgencyId;
 
     private Integer flag;
 
@@ -122,60 +122,6 @@ public class Restaurant {
     }
 
     /**
-     * 获取国家
-     *
-     * @return country - 国家
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * 设置国家
-     *
-     * @param country 国家
-     */
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
-    }
-
-    /**
-     * 获取省份/州
-     *
-     * @return province - 省份/州
-     */
-    public String getProvince() {
-        return province;
-    }
-
-    /**
-     * 设置省份/州
-     *
-     * @param province 省份/州
-     */
-    public void setProvince(String province) {
-        this.province = province == null ? null : province.trim();
-    }
-
-    /**
-     * 获取城市
-     *
-     * @return city - 城市
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * 设置城市
-     *
-     * @param city 城市
-     */
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
-    }
-
-    /**
      * 获取照片
      *
      * @return picture - 照片
@@ -191,6 +137,24 @@ public class Restaurant {
      */
     public void setPicture(String picture) {
         this.picture = picture == null ? null : picture.trim();
+    }
+
+    /**
+     * 获取城市id
+     *
+     * @return city_id - 城市id
+     */
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    /**
+     * 设置城市id
+     *
+     * @param cityId 城市id
+     */
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
     /**
@@ -320,17 +284,39 @@ public class Restaurant {
     }
 
     /**
-     * @return program_id
+     * 获取旅游行程
+     *
+     * @return program_id - 旅游行程
      */
     public Integer getProgramId() {
         return programId;
     }
 
     /**
-     * @param programId
+     * 设置旅游行程
+     *
+     * @param programId 旅游行程
      */
     public void setProgramId(Integer programId) {
         this.programId = programId;
+    }
+
+    /**
+     * 获取旅行社id
+     *
+     * @return travel_agency_id - 旅行社id
+     */
+    public Integer getTravelAgencyId() {
+        return travelAgencyId;
+    }
+
+    /**
+     * 设置旅行社id
+     *
+     * @param travelAgencyId 旅行社id
+     */
+    public void setTravelAgencyId(Integer travelAgencyId) {
+        this.travelAgencyId = travelAgencyId;
     }
 
     /**

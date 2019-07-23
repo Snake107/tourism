@@ -25,9 +25,9 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "/userRegister",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/user/register",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     @ResponseBody
     public boolean registerUser(@RequestBody User user){
-          return userService.addUser(user);
+        return userService.addUser(user);
     }
 }

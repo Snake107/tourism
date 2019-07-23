@@ -15,6 +15,11 @@ public class User {
     private String nickName;
 
     /**
+     * 注册邮箱
+     */
+    private String email;
+
+    /**
      * 密码
      */
     private String password;
@@ -78,11 +83,6 @@ public class User {
     private String code;
 
     /**
-     * 是否会员
-     */
-    private Integer member;
-
-    /**
      * 状态
      */
     private Integer flag;
@@ -117,6 +117,24 @@ public class User {
      */
     public void setNickName(String nickName) {
         this.nickName = nickName == null ? null : nickName.trim();
+    }
+
+    /**
+     * 获取注册邮箱
+     *
+     * @return email - 注册邮箱
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * 设置注册邮箱
+     *
+     * @param email 注册邮箱
+     */
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     /**
@@ -333,24 +351,6 @@ public class User {
      */
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();
-    }
-
-    /**
-     * 获取是否会员
-     *
-     * @return member - 是否会员
-     */
-    public Integer getMember() {
-        return member;
-    }
-
-    /**
-     * 设置是否会员
-     *
-     * @param member 是否会员
-     */
-    public void setMember(Integer member) {
-        this.member = member;
     }
 
     /**
