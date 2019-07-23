@@ -12,7 +12,7 @@
         <!-- 用于配置对象关系映射配置文件所在目录 -->
         <property name="mapperLocations" >
             <array>
-                <value>classpath:/mapper/**/*.xml</value>
+                <!--<value>classpath:/mapper/**/*.xml</value>-->
                 <value>classpath:/mapperExt/**/*.xml</value>
             </array>
         </property>

@@ -183,26 +183,25 @@
 					<div class="row no-gutters custom-search-input-2 inner">
 						<div class="col-lg-4">
 							<div class="form-group">
-								<input class="form-control" type="text" placeholder="What are you looking for...">
+								<input class="form-control" id="keyword" type="text" placeholder="关键字查询">
 								<i class="icon_search"></i>
 							</div>
 						</div>
 						<div class="col-lg-3">
 							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Where">
+								<input class="form-control" type="text" id="region" placeholder="地区查询">
 								<i class="icon_pin_alt"></i>
 							</div>
 						</div>
 						<div class="col-lg-3">
-							<select class="wide">
-								<option>所有</option>
+							<select class="wide" id="classification">
 								<option>景点</option>
 								<option>酒店</option>
 								<option>餐厅</option>
 							</select>
 						</div>
 						<div class="col-lg-2">
-							<input type="submit" class="btn_search" value="Search">
+							<input type="submit" id="sub" class="btn_search" value="Search">
 						</div>
 					</div>
 					<!-- /row -->
@@ -701,7 +700,8 @@
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--<script src="js/jquery-2.2.4.min.js"></script>-->
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
@@ -782,6 +782,31 @@
 		})
 	})
 </script>
+
+
+
+	<script>
+		//搜索按钮触发事件
+		$("#sub").click(function () {
+			console.log($("#classification").val());
+			console.log($("#keyword").val());
+			console.log($("#region").val());
+			var temp = null;
+			if ($("#classification").val() == "景点") {
+				temp = 1;
+			}else if ($("#classification").val() == "酒店") {
+			    temp = 2;
+			}else if ($("#classification").val() == "景点"){
+                temp = 3;
+			}
+
+			var url = "all.html?keyword="+ $("#keyword").val() + "&region=" + $("#region").val() + "&classification=" + temp;
+            url = encodeURI(url);
+			location.href=url;
+
+        })
+	</script>
+	 <script defer src="js/weather_home.js"></script>
 
 </body>
 </html>

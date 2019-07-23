@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.AllSearchMapperExt" >
+
+    <!--<select id="SearchAll" parameterType="com.ssm.vo.SearchVo" resultType="com.ssm.dto.allsearch.SearchDto">-->
+        <!--SELECT-->
+	<!--a.*,-->
+	<!--city.country,-->
+	<!--city.province,-->
+	<!--city.city,-->
+	<!--city.description as city_description-->
+<!--FROM-->
+	<!--(-->
+		<!--SELECT-->
+			<!--id,-->
+			<!--city_id,-->
+			<!--hotel_name as `name`,-->
+			<!--picture,-->
+			<!--description,-->
+			<!--price,-->
+			<!--mark,-->
+			<!--p_type,-->
+			<!--travel_agency_id-->
+		<!--FROM-->
+			<!--t_hotel-->
+		<!--UNION-->
+			<!--SELECT-->
+				<!--id,-->
+				<!--city_id,-->
+				<!--scence_name  as `name`,-->
+				<!--picture,-->
+				<!--description,-->
+				<!--price,-->
+				<!--mark,-->
+				<!--p_type,-->
+				<!--travel_agency_id-->
+			<!--FROM-->
+				<!--t_scence-->
+			<!--UNION-->
+				<!--SELECT-->
+					<!--id,-->
+					<!--city_id,-->
+					<!--restaurant_name  as `name`,-->
+					<!--picture,-->
+					<!--description,-->
+					<!--price,-->
+					<!--mark,-->
+					<!--p_type,-->
+					<!--travel_agency_id-->
+				<!--FROM-->
+					<!--t_restaurant-->
+	<!--) AS a-->
+<!--LEFT JOIN t_city city-->
+
+<!--ON a.city_id = city.id-->
+
+		<!--<where>-->
+			<!--<choose>-->
+				<!--<when test="keyword != null and region != null and classification != null">-->
+					<!--CONCAT(-->
+					<!--city.country,-->
+					<!--city.city,-->
+					<!--city.province,-->
+					<!--a.name-->
+					<!--) LIKE #{keyword} and CONCAT(city.country,city.city,city.province) LIKE #{region}-->
+					<!--and  a.p_type = #{classification}-->
+				<!--</when>-->
+
+				<!--<when test="keyword != null and region != null">-->
+					<!--CONCAT(-->
+					<!--city.country,-->
+					<!--city.city,-->
+					<!--city.province,-->
+					<!--a.name-->
+					<!--) LIKE #{keyword} and CONCAT(city.country,city.city,city.province) LIKE #{region}-->
+				<!--</when>-->
+
+				<!--<when test="keyword != null and classification != null">-->
+					<!--CONCAT(-->
+					<!--city.country,-->
+					<!--city.city,-->
+					<!--city.province,-->
+					<!--a.name-->
+					<!--) LIKE #{keyword} and a.p_type = #{classification}-->
+				<!--</when>-->
+
+				<!--<when test="region != null and classification != null">-->
+					<!--CONCAT(city.country,city.city,city.province) LIKE #{region} and a.p_type = #{classification}-->
+				<!--</when>-->
+
+				<!--<when test="keyword != null">-->
+					<!--a.name  LIKE #{keyword}-->
+				<!--</when>-->
+
+				<!--<when test="region != null">-->
+					<!--CONCAT(city.country,city.city,city.province) LIKE #{region}-->
+				<!--</when>-->
+
+				<!--<when test="classification != null">-->
+					<!--and  a.p_type = #{classification}-->
+				<!--</when>-->
+			<!--</choose>-->
+		<!--</where>-->
+<!--</select>-->
+
+
+	<select id="SearchAll" parameterType="com.ssm.vo.SearchVo" resultType="com.ssm.dto.allsearch.SearchDto">
+		SELECT
+		Fuzzy_query.*
+		FROM
+		(
+		SELECT
+		information.*, tag.tag_name
+		FROM
+		(
+		SELECT
+		Commodity_info.*, count(t_com.id) AS comment_number
+		FROM
+		(
+		SELECT
+		a.*, city.country,
+		city.province,
+		city.city,
+		city.description AS city_description
+		FROM
+		(
+		SELECT
+		id,
+		city_id,
+		hotel_name AS `name`,
+		picture,
+		description,
+		price,
+		mark,
+		p_type,
+		travel_agency_id,
+		tags_id,
+		views
+		FROM
+		t_hotel
+		UNION
+		SELECT
+		id,
+		city_id,
+		scence_name AS `name`,
+		picture,
+		description,
+		price,
+		mark,
+		p_type,
+		travel_agency_id,
+		tags_id,
+		views
+		FROM
+		t_scence
+		UNION
+		SELECT
+		id,
+		city_id,
+		restaurant_name AS `name`,
+		picture,
+		description,
+		price,
+		mark,
+		p_type,
+		travel_agency_id,
+		tags_id,
+		views
+		FROM
+		t_restaurant
+		) AS a
+		LEFT JOIN t_city city ON a.city_id = city.id
+		) AS Commodity_info
+		LEFT JOIN t_comment AS t_com ON t_com.big_type = Commodity_info.p_type
+		AND t_com.commodity_id = Commodity_info.id
+		GROUP BY
+		Commodity_info.id,
+		Commodity_info.p_type
+		ORDER BY
+		Commodity_info.p_type
+		) AS information
+		LEFT JOIN t_tags tag ON tag.id = information.tags_id
+		) AS Fuzzy_query
+		<where>
+			<choose>
+				<when test="keyword != null and region != null and classification != null">
+					CONCAT(
+					Fuzzy_query.country,
+					Fuzzy_query.city,
+					Fuzzy_query.province,
+					Fuzzy_query.name
+					) LIKE "%"#{keyword}"%" and CONCAT(Fuzzy_query.country,Fuzzy_query.city,Fuzzy_query.province) LIKE "%"#{region}"%"
+					and  Fuzzy_query.p_type = #{classification}
+				</when>
+
+				<when test="keyword != null and region != null">
+					CONCAT(
+					Fuzzy_query.country,
+					Fuzzy_query.city,
+					Fuzzy_query.province,
+					Fuzzy_query.name
+					) LIKE "%" #{keyword}"%"  and CONCAT(Fuzzy_query.country,Fuzzy_query.city,Fuzzy_query.province) LIKE "%"#{region}"%"
+				</when>
+
+				<when test="keyword != null and classification != null">
+					CONCAT(
+					Fuzzy_query.country,
+					Fuzzy_query.city,
+					Fuzzy_query.province,
+					Fuzzy_query.name
+					) LIKE "%"#{keyword}"%" and Fuzzy_query.p_type = #{classification}
+				</when>
+
+				<when test="region != null and classification != null">
+					CONCAT(Fuzzy_query.country,Fuzzy_query.city,Fuzzy_query.province)
+					LIKE "%" #{region}"%"
+					and Fuzzy_query.p_type = #{classification}
+				</when>
+
+				<when test="keyword != null">
+					Fuzzy_query.name  LIKE "%"#{keyword}"%"
+				</when>
+
+				<when test="region != null">
+					CONCAT(Fuzzy_query.country,Fuzzy_query.city,Fuzzy_query.province) LIKE "%"#{region}"%"
+				</when>
+
+				<when test="classification != null">
+					and  Fuzzy_query.p_type = #{classification}
+				</when>
+			</choose>
+		</where>
+
+	</select>
+</mapper>
