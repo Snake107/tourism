@@ -16,5 +16,5 @@ public interface UserMapperExt extends Mapper<User> {
      * @param user  用户信息对象
      * @return      用户信息集合
      */
-    //List<User> checkUsername(User  user);
+    //List<User> checkUsername(User  user) ;
 }

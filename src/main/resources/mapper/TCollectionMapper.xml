@@ -15,6 +15,6 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, commodity_id, big_type, user_id, flag
+     id, commodity_id, big_type, user_id, flag
   </sql>
 </mapper>

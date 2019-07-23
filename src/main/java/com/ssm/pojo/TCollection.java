@@ -19,7 +19,7 @@ public class TCollection {
     /**
      * 商品类型
      */
-    @Column(name = "big_type")
+    @Column(name = "big_type" )
     private Integer bigType;
 
     /**

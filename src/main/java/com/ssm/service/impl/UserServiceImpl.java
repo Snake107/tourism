@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @Date: 2019-07-22 22:01
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class  UserServiceImpl implements UserService {
 
     @Resource
     UserMapperExt userMapperExt;
@@ -23,6 +23,6 @@ public class UserServiceImpl implements UserService {
         if (rSet > 0){
              return true;
         }
-        return false;
+         return false;
     }
 }

@@ -12,5 +12,5 @@ public interface UserService {
      * @param user  用户信息对象
      * @return      是否注册成功
      */
-    boolean addUser(User user);
+    boolean addUser(User user) ;
 }

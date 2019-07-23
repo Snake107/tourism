@@ -3,6 +3,6 @@
 <mapper namespace="com.ssm.dao.mappingExt.UserMapperExt" >
 
     <insert id="addUser" parameterType="com.ssm.pojo.User">
-        INSERT INTO t_user(nick_name,password,email) VALUES(#{nickName},#{password},#{email} );
+        INSERT INTO t_user(nick_name,password,email) VALUES(#{nickName},#{password},#{email});
     </insert>
 </mapper>

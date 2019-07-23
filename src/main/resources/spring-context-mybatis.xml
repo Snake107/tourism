@@ -20,8 +20,6 @@
     </bean>
 
 
-
-
     <!-- 扫描 Mapper -->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ssm.dao"/>
