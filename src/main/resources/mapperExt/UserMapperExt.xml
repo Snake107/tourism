@@ -6,6 +6,16 @@
         INSERT INTO t_user(nick_name,password,email) VALUES(#{nickName},#{password},#{email});
     </insert>
 
+    <!-- 设置邮箱验证码 -->
+    <update id="setCode" parameterType="com.ssm.dto.ForgotParameter">
+        UPDATE t_user SET code = #{code} WHERE email = #{email};
+    </update>
+
+    <!-- 根据邮箱验证码修改用户密码 -->
+    <update id="updatePassword" parameterType="com.ssm.dto.ChangeParamter">
+        UPDATE t_user SET password = #{password} WHERE code = #{code} AND email = #{email};
+    </update>
+
     <!-- 检查用户名是否存在 -->
     <select id="checkNickName" resultType="com.ssm.pojo.User">
         SELECT * FROM t_user WHERE nick_name = #{nickName};
@@ -24,5 +34,10 @@
     <!-- 获取单个用户的所有信息 -->
     <select id="getUserByEmail" resultType="com.ssm.pojo.User">
         SELECT * FROM t_user WHERE email = #{email};
+    </select>
+
+    <!-- 检查邮箱验证码是否正确 -->
+    <select id="checkCode" resultType="com.ssm.pojo.User">
+        SELECT * FROM t_user WHERE code = #{code} AND email = #{email};
     </select>
 </mapper>

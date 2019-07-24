@@ -1,5 +1,7 @@
 package com.ssm.dao.mappingExt;
 
+import com.ssm.dto.ChangeParamter;
+import com.ssm.dto.ForgotParameter;
 import com.ssm.pojo.User;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -40,4 +42,23 @@ public interface UserMapperExt extends Mapper<User> {
      * @return      数据库中用户的所有信息
      */
     User getUserByEmail(User user);
+
+    /**
+     * 设置用户表中的验证码字段
+     * @param forgotParameter
+     */
+    void setCode(ForgotParameter forgotParameter);
+
+    /**
+     * 判断邮箱验证码是否正确
+     * @return  用户信息集合
+     */
+    List<User> checkCode(ChangeParamter changeParamter);
+
+    /**
+     * 根据邮箱验证码修改用户密码
+     * @param changeParamter    前端用户提交信息
+     * @return                  影响行数
+     */
+    Integer updatePassword(ChangeParamter changeParamter);
 }

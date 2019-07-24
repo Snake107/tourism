@@ -1,5 +1,7 @@
 package com.ssm.service;
 
+import com.ssm.dto.ChangeParamter;
+import com.ssm.dto.ForgotParameter;
 import com.ssm.pojo.User;
 
 /**
@@ -17,4 +19,9 @@ public interface UserService {
     boolean loginUser(User user);
     // 获取单个用户的所有信息
     User getUserByEmail(User user);
+    // 发送验证码到用户邮箱,并把验证码存到数据库中
+    Object sendEmail(ForgotParameter forgotParameter);
+    // 通过邮箱验证,修改用户密码
+    Integer changePassword(ChangeParamter changeParamter);
+
 }

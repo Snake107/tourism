@@ -30,6 +30,11 @@ public class Comment {
     private Integer userId;
 
     /**
+     * 评论内容
+     */
+    private String content;
+
+    /**
      * 父级评论
      */
     @Column(name = "parent_id")
@@ -47,11 +52,6 @@ public class Comment {
     private Integer mark;
 
     private Integer flag;
-
-    /**
-     * 评论内容
-     */
-    private String content;
 
     /**
      * 获取id
@@ -126,6 +126,24 @@ public class Comment {
     }
 
     /**
+     * 获取评论内容
+     *
+     * @return content - 评论内容
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * 设置评论内容
+     *
+     * @param content 评论内容
+     */
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    /**
      * 获取父级评论
      *
      * @return parent_id - 父级评论
@@ -191,23 +209,5 @@ public class Comment {
      */
     public void setFlag(Integer flag) {
         this.flag = flag;
-    }
-
-    /**
-     * 获取评论内容
-     *
-     * @return content - 评论内容
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * 设置评论内容
-     *
-     * @param content 评论内容
-     */
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
     }
 }

@@ -1,12 +1,16 @@
 package com.ssm.service.impl;
 
 import com.ssm.dao.mappingExt.UserMapperExt;
+import com.ssm.dto.ChangeParamter;
+import com.ssm.dto.ForgotParameter;
+import com.ssm.email.SendEmail;
 import com.ssm.pojo.User;
 import com.ssm.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Author: FatCao
@@ -86,5 +90,40 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByEmail(User user) {
         return userMapperExt.getUserByEmail(user);
+    }
+
+    /**
+     * 忘记密码  发送验证码到用户邮箱
+     * @param forgotParameter
+     * @return
+     */
+    @Override
+    public Object sendEmail(ForgotParameter forgotParameter) {
+        String string = UUID.randomUUID().toString().substring(0,6);
+        String str = "您的邮箱验证代码为: "+string+"，请在网页中填写，完成验证。";
+        forgotParameter.setCode(string);
+        try {
+            SendEmail.sendQQMails(forgotParameter.getEmail(),str);
+            userMapperExt.setCode(forgotParameter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 通过邮箱验证码 , 修改密码
+     * @param changeParamter    用户修改的信息
+     * @return                  返回 1 为修改成功 , 返回 0 为修改失败
+     */
+    @Override
+    public Integer changePassword(ChangeParamter changeParamter) {
+        // 判断邮箱验证码是否正确
+        List<User> list = userMapperExt.checkCode(changeParamter);
+        if (list.size() > 0){
+            // 验证码正确则修改密码
+            return userMapperExt.updatePassword(changeParamter);
+        }
+        return 0;
     }
 }
