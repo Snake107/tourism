@@ -85,20 +85,20 @@
 		<!--/hero_in-->
 		
 		<div class="filters_listing sticky_horizontal">
-			<div class="container">
+			<div class="container" style="display: none">
 				<ul class="clearfix">
 					<li>
 						<div class="switch-field">
-							<input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
-							<label for="all">All</label>
-							<input type="radio" id="popular" name="listing_filter" value="popular" data-filter=".popular">
-							<label for="popular">Popular</label>
-							<input type="radio" id="latest" name="listing_filter" value="latest" data-filter=".latest">
-							<label for="latest">Latest</label>
+							<input type="radio" id="all" style="display: none" name="listing_filter" value="all" checked data-filter="*" class="selected">
+							<label for="all" style="display: none">所有分类</label>
+							<input type="radio" id="popular" style="display: none" name="listing_filter" value="popular" data-filter=".popular">
+							<label for="popular" style="display: none">Popular</label>
+							<input type="radio" id="latest" style="display: none" name="listing_filter" value="latest" data-filter=".latest">
+							<label for="latest" style="display: none">Latest</label>
 						</div>
 					</li>
 					<li>
-						<div class="layout_view">
+						<div class="layout_view" style="display: none">
 							<a href="tours-grid-isotope.html"><i class="icon-th"></i></a>
 							<a href="#0" class="active"><i class="icon-th-list"></i></a>
 						</div>
@@ -122,54 +122,53 @@
 				<aside class="col-lg-3">
 					<div class="custom-search-input-2 inner-2">
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Terms...">
+							<input class="form-control" type="text" id="keyword" placeholder="关键字">
 							<i class="icon_search"></i>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Where">
+							<input class="form-control" type="text" id="region" placeholder="地理位置">
 							<i class="icon_pin_alt"></i>
 						</div>
 						<div class="form-group">
-						<select class="wide">
-							<option>All Categories</option>	
-							<option>Museums</option>
-							<option>Churches</option>
-							<option>Historic</option>
-							<option>Walking</option>
+						<select class="wide" id="classification">
+							<option>所有</option>
+							<option>景点</option>
+							<option>酒店</option>
+							<option>餐厅</option>
 						</select>
 						</div>
-						<input type="submit" class="btn_search" value="Search">
+						<input type="submit" class="btn_search" id="Search" value="搜索">
 					</div>
 					<!-- /custom-search-input-2 -->
 					<div id="filters_col">
-						<a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters </a>
+						<a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">筛选</a>
 						<div class="collapse show" id="collapseFilters">
 							<div class="filter_type">
-                                <h6>Duration</h6>
+                                <h6>价格区间</h6>
                                 <input type="text" id="range" name="range" value="">
                             </div>
 							<div class="filter_type">
-								<h6>Rating</h6>
+								<h6>评分</h6>
 								 <ul>
                                     <li>
-                                        <label>Superb: 9+</label>
-                                        <input type="checkbox" class="js-switch" checked>
+                                        <label >一流的: 9+</label>
+                                        <input type="checkbox" class="js-switch"  value="9" name="chick">
                                     </li>
                                     <li>
-                                        <label>Very good: 8+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <label>很好: 8+</label>
+                                        <input type="checkbox" class="js-switch"  value="8" name="chick">
                                     </li>
                                     <li>
-                                        <label>Good: 7+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <label>棒: 7+</label>
+                                        <input type="checkbox" class="js-switch"  value="7" name="chick">
                                     </li>
                                     <li>
-                                        <label>Pleasant: 6+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <label>愉快的: 6+</label>
+                                        <input type="checkbox" class="js-switch"  value="6" name="chick">
                                     </li>
                                     <li>
-                                        <label>No rating</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <label>一般：5-</label>
+                                        <input type="checkbox" class="js-switch"  value="5" name="chick">
                                     </li>
                                 </ul>
 							</div>
@@ -181,7 +180,7 @@
 				<!-- /aside -->
 
 				<div class="col-lg-9" id="list_sidebar">
-					<div class="isotope-wrapper" id="list_div">
+					<!--<div class="isotope-wrapper" id="list_div">-->
 					<!--<div class="box_list isotope-item popular">-->
 						<!--<div class="row no-gutters">-->
 							<!--<div class="col-lg-5">-->
@@ -297,10 +296,10 @@
 						<!--</div>-->
 					<!--</div>-->
 					<!-- /box_list -->
-					</div>
+					<!--</div>-->
 					<!-- /isotope-wrapper -->
 
-					<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p>
+					<!--<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">加载更多</a></p>-->
 				</div>
 				<!-- /col -->
 			</div>
@@ -507,15 +506,16 @@
 		$("#range").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
-            min: 30,
-            max: 180,
+            min: 0,
+            max: 9999,
             from: 60,
-            to: 130,
+            to: 9999,
             type: 'double',
             step: 1,
-            prefix: "Min. ",
+            prefix: "金额. ",
             grid: false
         });
+		//ajax调用方法获取url的参数
 		$(function () {
 		    var data_list = "";
             var data = getRequest();
@@ -531,32 +531,13 @@
                 //成功返回之后调用的函数
                 data:JSON.stringify(data),
                 success:function(returnData){
-                    console.log(returnData)
-                    $.each(returnData,function (index, itme) {
-						data_list += "<div class=\"box_list isotope-item popular\">\n" +
-                            "\t\t\t\t\t\t<div class=\"row no-gutters\">\n" +
-                            "\t\t\t\t\t\t\t<div class=\"col-lg-5\">\n" +
-                            "\t\t\t\t\t\t\t\t<figure>\n" +
-                            "\t\t\t\t\t\t\t\t\t<small>"+itme.tagName+"</small>\n" +
-                            "\t\t\t\t\t\t\t\t\t<a href=\"tour-detail.html\"><img src=\"img/tour_1.jpg\" class=\"img-fluid\" alt=\"\" width=\"800\" height=\"533\"><div class=\"read_more\"><span>查看详情</span></div></a>\n" +
-                            "\t\t\t\t\t\t\t\t</figure>\n" +
-                            "\t\t\t\t\t\t\t</div>\n" +
-                            "\t\t\t\t\t\t\t<div class=\"col-lg-7\">\n" +
-                            "\t\t\t\t\t\t\t\t<div class=\"wrapper\">\n" +
-                            "\t\t\t\t\t\t\t\t\t<a href=\"#0\" class=\"wish_bt\"></a>\n" +
-                            "\t\t\t\t\t\t\t\t\t<h3><a href=\"tour-detail.html\">"+itme.name+"</a></h3>\n" +
-                            "\t\t\t\t\t\t\t\t\t<p>"+itme.description+"</p>\n" +
-                            "\t\t\t\t\t\t\t\t\t<span class=\"price\">套餐: <strong>"+itme.price+"</strong> /人民币</span>\n" +
-                            "\t\t\t\t\t\t\t\t</div>\n" +
-                            "\t\t\t\t\t\t\t\t<ul>\n" +
-                            "\t\t\t\t\t\t\t\t\t<li><i class=\"ti-eye\"></i> "+itme.views+" 浏览</li>\n" +
-                            "\t\t\t\t\t\t\t\t\t<li><div class=\"score\"><span>一共有<em>"+itme.commentNumber+" 评论</em></span><strong>"+itme.mark+"</strong></div></li>\n" +
-                            "\t\t\t\t\t\t\t\t</ul>\n" +
-                            "\t\t\t\t\t\t\t</div>\n" +
-                            "\t\t\t\t\t\t</div>\n" +
-                            "\t\t\t\t\t</div>";
-                    });
-                    $("#list_div").append(data_list)
+                    console.log(returnData + "第一次进来的")
+                    if (returnData == null){
+                        $("#list_sidebar").empty();
+                        $("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>").appendTo($("#list_sidebar"));
+                    } else {
+                        TraverseList(returnData);
+                    }
                 },
                 //调用出错执行的函数
                 error: function(responseText){
@@ -565,10 +546,80 @@
                 }
             });
         })
+		//当前页面点击搜索
+		$("#Search").click(function () {
+            var data_list = "";
+		    //获取筛选中的评论分数
+			var mark = "";
+            $("input[name='chick']:checkbox").each(function () {
+				if ($(this).is(':checked')) {
+				    mark = $(this).val();
+				}
+            });
+
+        	//获取滑动条的值
+            var split = $("#range").val().split(";");
+            var max = split[0];
+            var min = split[1];
+
+		    var keyword = $("#keyword").val();
+		    var region = $("#region").val();
+            var classification = null;
+            if ($("#classification").val() == "景点") {
+                classification = 1;
+            }else if ($("#classification").val() == "酒店") {
+                classification = 2;
+            }else if ($("#classification").val() == "餐厅"){
+                classification = 3;
+            }
+            // else if ($("#classification").val() == "所有"){
+            //     classification = "";
+            // }
+            alert(classification + "分类")
+            // alert(classification);
+            $.ajax({
+                //提交数据的类型 POST GET
+                type:"POST",
+                //提交的网址
+                url:"all/search",
+                //返回数据的格式
+                dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                contentType:"application/json",
+                async:false,
+                //成功返回之后调用的函数
+                data:JSON.stringify({
+					"keyword":keyword,
+					"region":region,
+					"classification":classification,
+					"max":max,
+					"min":min,
+					"mark":mark,
+				}),
+                success: function (returnData) {
+                    console.log(returnData + "点击后的")
+                    if (returnData == null){
+                        $("#list_sidebar").empty();
+                        $("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>").appendTo($("#list_sidebar"));
+					} else {
+                        TraverseList(returnData);
+                    }
+                },
+                //调用出错执行的函数
+                error: function(responseText){
+                    //请求出错处理
+                    console.error(responseText);
+                }
+            });
+        })
+		console.log($("#range").val())
+
+
+
+
 	</script>
 
 	<script>
-
+		//获取url的值
         function getRequest() {
             var url = window.location.search; //获取url中"?"符后的字串   
             var theRequest = new Object();
@@ -586,6 +637,39 @@
             return theRequest;
         }
 
+    	//遍历列表并赋值
+		function TraverseList(returnData) {
+            var data_list = "";
+            $("#list_sidebar").empty();
+            $.each(returnData, function (index, itme) {
+                data_list += "<div class=\"box_list isotope-item popular\">\n" +
+                    "\t\t\t\t\t\t<div class=\"row no-gutters\">\n" +
+                    "\t\t\t\t\t\t\t<div class=\"col-lg-5\">\n" +
+                    "\t\t\t\t\t\t\t\t<figure>\n" +
+                    "\t\t\t\t\t\t\t\t\t<small>" + itme.tagName + "</small>\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"tour-detail.html?id="+itme.id+"&type="+itme.pType+"\"><img src=\"img/tour_1.jpg\" class=\"img-fluid\" alt=\"\" width=\"800\" height=\"533\"><div class=\"read_more\"><span>查看详情</span></div></a>\n" +
+                    "\t\t\t\t\t\t\t\t</figure>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class=\"col-lg-7\">\n" +
+                    "\t\t\t\t\t\t\t\t<div class=\"wrapper\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"#0\" class=\"wish_bt\"></a>\n" +
+                    "\t\t\t\t\t\t\t\t\t<h3><a href=\"tour-detail.html?id="+itme.id+"&type="+itme.pType+"\">" + itme.name + "</a></h3>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p>" + itme.description + "</p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<span class=\"price\">套餐: <strong>" + itme.price + "</strong> /人民币</span>\n" +
+                    "\t\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t\t<ul>\n" +
+                    "\t\t\t\t\t\t\t\t\t<li><i class=\"ti-eye\"></i> " + itme.views + " 浏览</li>\n" +
+                    "\t\t\t\t\t\t\t\t\t<li><div class=\"score\"><span>一共有<em>" + itme.commentNumber + " 评论</em></span><strong>" + itme.mark + "</strong></div></li>\n" +
+                    "\t\t\t\t\t\t\t\t</ul>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t</div>";
+            });
+            $("#list_sidebar").append(data_list);
+            // $("#list_sidebar").append("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>")
+
+            $("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>").appendTo($("#list_sidebar"));
+        }
 	</script>
 	
 

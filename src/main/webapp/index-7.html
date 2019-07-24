@@ -796,10 +796,10 @@
 				temp = 1;
 			}else if ($("#classification").val() == "酒店") {
 			    temp = 2;
-			}else if ($("#classification").val() == "景点"){
+			}else if ($("#classification").val() == "餐厅"){
                 temp = 3;
 			}
-
+			alert(temp);
 			var url = "all.html?keyword="+ $("#keyword").val() + "&region=" + $("#region").val() + "&classification=" + temp;
             url = encodeURI(url);
 			location.href=url;

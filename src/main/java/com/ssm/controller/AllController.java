@@ -28,6 +28,8 @@ public class AllController {
     @RequestMapping(value = "search",method = RequestMethod.POST)
     @ResponseBody
     public List<SearchDto> search(@RequestBody SearchVo searchVo){
+        System.out.println(searchVo.toString());
+        System.out.println("==========================");
         return allService.searchAll(searchVo);
     }
 }

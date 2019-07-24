@@ -4,6 +4,25 @@ public class SearchVo {
     private String keyword;
     private String region;
     private Integer classification;
+    private Integer mark;
+    private Integer max;
+    private Integer min;
+
+    public Integer getMax() {
+        return max;
+    }
+
+    public void setMax(Integer max) {
+        this.max = max;
+    }
+
+    public Integer getMin() {
+        return min;
+    }
+
+    public void setMin(Integer min) {
+        this.min = min;
+    }
 
     public SearchVo() {
     }
@@ -12,6 +31,14 @@ public class SearchVo {
         this.keyword = keyword;
         this.region = region;
         this.classification = classification;
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
     }
 
     public String getKeyword() {
@@ -43,7 +70,10 @@ public class SearchVo {
         return "SearchVo{" +
             "keyword='" + keyword + '\'' +
             ", region='" + region + '\'' +
-            ", classification='" + classification + '\'' +
+            ", classification=" + classification +
+            ", mark=" + mark +
+            ", max=" + max +
+            ", min=" + min +
             '}';
     }
 }
