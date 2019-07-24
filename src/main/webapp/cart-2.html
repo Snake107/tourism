@@ -79,7 +79,7 @@
 				<div class="container">
 					<div class="bs-wizard clearfix">
 						<div class="bs-wizard-step">
-							<div class="text-center bs-wizard-stepnum">Your cart</div>
+							<div class="text-center bs-wizard-stepnum">你的购物车</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -87,7 +87,7 @@
 						</div>
 
 						<div class="bs-wizard-step active">
-							<div class="text-center bs-wizard-stepnum">Payment</div>
+							<div class="text-center bs-wizard-stepnum">支付</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -95,7 +95,7 @@
 						</div>
 
 						<div class="bs-wizard-step disabled">
-							<div class="text-center bs-wizard-stepnum">Finish!</div>
+							<div class="text-center bs-wizard-stepnum">完成!</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -117,105 +117,84 @@
 							<p>Exisitng Customer? <a href="#0">Click here to login</a></p>
 						</div>
 						<div class="form_title">
-							<h3><strong>1</strong>Your Details</h3>
+							<h3><strong>1</strong>商品信息</h3>
 							<p>
-								Mussum ipsum cacilds, vidis litro abertis.
+								没钱出门转右
 							</p>
 						</div>
-						<div class="step">
-							<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>First name</label>
-									<input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>Last name</label>
-									<input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>Email</label>
-									<input type="email" id="email_booking" name="email_booking" class="form-control">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>Confirm email</label>
-									<input type="email" id="email_booking_2" name="email_booking_2" class="form-control">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>Telephone</label>
-									<input type="text" id="telephone_booking" name="telephone_booking" class="form-control">
-								</div>
-							</div>
-						</div>
-						</div>
+						<div class="step" >
+							<table class="table table-striped cart-list">
+								<thead>
+								<tr>
+									<th>
+										商品
+									</th>
+									<th>
+										折扣价
+									</th>
+									<th>
+										数量
+									</th>
+									<th>
+										价格
+									</th>
+									<th>
+										总价
+									</th>
+								</tr>
+								</thead>
+							<tbody id="tab11">
+
+							</tbody>
+							</table>
+<!--							<div class="row">-->
+<!--&lt;!&ndash;							<div class="col-sm-6">&ndash;&gt;-->
+<!--&lt;!&ndash;								<div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;									<label>First name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;									<input type="text" class="form-control" id="firstname_booking" name="firstname_booking">&ndash;&gt;-->
+<!--&lt;!&ndash;								</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							<div class="col-sm-6">&ndash;&gt;-->
+<!--&lt;!&ndash;								<div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;									<label>Last name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;									<input type="text" class="form-control" id="lastname_booking" name="lastname_booking">&ndash;&gt;-->
+<!--&lt;!&ndash;								</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+<!--&lt;!&ndash;						</div>&ndash;&gt;-->
+<!--&lt;!&ndash;						<div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;							<div class="col-sm-6">&ndash;&gt;-->
+<!--&lt;!&ndash;								<div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;									<label>Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;									<input type="email" id="email_booking" name="email_booking" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;								</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							<div class="col-sm-6">&ndash;&gt;-->
+<!--&lt;!&ndash;								<div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;									<label>Confirm email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;									<input type="email" id="email_booking_2" name="email_booking_2" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;								</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+<!--						</div>-->
+<!--&lt;!&ndash;						<div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;							<div class="col-sm-6">&ndash;&gt;-->
+<!--&lt;!&ndash;								<div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;									<label>Telephone</label>&ndash;&gt;-->
+<!--&lt;!&ndash;									<input type="text" id="telephone_booking" name="telephone_booking" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;								</div>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+<!--&lt;!&ndash;						</div>&ndash;&gt;-->
+<!--						</div>-->
 						<hr>
 						<!--End step -->
 
 						<div class="form_title">
-							<h3><strong>2</strong>Payment Information</h3>
+							<h3><strong>2</strong>支付途径</h3>
 							<p>
-								Mussum ipsum cacilds, vidis litro abertis.
+								微信，支付宝
 							</p>
 						</div>
-						<div class="step">
-							<div class="form-group">
-							<label>Name on card</label>
-							<input type="text" class="form-control" id="name_card_bookign" name="name_card_bookign">
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12">
-								<div class="form-group">
-									<label>Card number</label>
-									<input type="text" id="card_number" name="card_number" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-12">
-								<img src="img/cards_all.svg" alt="Cards" class="cards-payment">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Expiration date</label>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="MM">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="Year">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Security code</label>
-									<div class="row">
-										<div class="col-4">
-											<div class="form-group">
-												<input type="text" id="ccv" name="ccv" class="form-control" placeholder="CCV">
-											</div>
-										</div>
-										<div class="col-8">
-											<img src="img/icon_ccv.gif" width="50" height="29" alt="ccv"><small>Last 3 digits</small>
-										</div>
-									</div>
-								</div>
-							</div>
+							<button name="wx" >微信</button>
+							<button name="zfb" >支付宝</button>
 						</div>
 						<!--End row -->
 
@@ -232,69 +211,12 @@
 						<hr>
 						<!--End step -->
 
-						<div class="form_title">
-							<h3><strong>3</strong>Billing Address</h3>
-							<p>
-								Mussum ipsum cacilds, vidis litro abertis.
-							</p>
-						</div>
-						<div class="step">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Country</label>
-										<div class="custom-select-form">
-										<select class="wide add_bottom_15" name="country" id="country">
-											<option value="" selected>Select your country</option>
-											<option value="Europe">Europe</option>
-											<option value="United states">United states</option>
-											<option value="Asia">Asia</option>
-										</select>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Street line 1</label>
-										<input type="text" id="street_1" name="street_1" class="form-control">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Street line 2</label>
-										<input type="text" id="street_2" name="street_2" class="form-control">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 col-sm-12">
-									<div class="form-group">
-										<label>City</label>
-										<input type="text" id="city_booking" name="city_booking" class="form-control">
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<div class="form-group">
-										<label>State</label>
-										<input type="text" id="state_booking" name="state_booking" class="form-control">
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<div class="form-group">
-										<label>Postal code</label>
-										<input type="text" id="postal_code" name="postal_code" class="form-control">
-									</div>
-								</div>
-							</div>
-							<!--End row -->
-						</div>
+
 						<hr>
 						<!--End step -->
 						<div id="policy">
-							<h5>Cancellation policy</h5>
-							<p class="nomargin">Lorem ipsum dolor sit amet, vix <a href="#0">cu justo blandit deleniti</a>, discere omittantur consectetuer per eu. Percipit repudiare similique ad sed, vix ad decore nullam ornatus.</p>
+							<h5>确认一下是否够钱</h5>
+							<p class="nomargin">如果想获得更低价格 <a href="#0">充值会员</a>, 是个不错的选择.</p>
 						</div>
 						</div>
 					</div>
@@ -303,7 +225,7 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail">
 							<div id="total_cart">
-								Total <span class="float-right">69.00$</span>
+								支付价格 <span class="float-right" id="total_money">69.00$</span>
 							</div>
 							<ul class="cart_details">
 								<li>From <span>02-11-18</span></li>
@@ -465,7 +387,88 @@
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
 	
-	
+	<script type="text/javascript">
+		function getPay(){
+			$.ajax({
+				url: "/tourism/buycart/getPay",    //请求的url地址
+				dataType: "json",   //返回格式为json
+				async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+				contentType: "application/json;charset=utf-8",
+				data: JSON.stringify(
+
+				),    //参数值
+				type: "POST",   //请求方式
+				success: function (data) {
+					console.log(data)
+					//请求成功时处理
+					var value ="";
+					$.each(data.shoppingCartList,function (i, item){
+						value += "<tr>\n" +
+								"\t\t\t\t\t\t\t\t\t<td>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<div class=\"thumb_cart\">\n" +
+								"\t\t\t\t\t\t\t\t\t\t\t<img src=\"http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg\" alt=\"Image\">\n" +
+								"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<span class=\"item_cart\">"+item.commodityName+"</span>\n" +
+								"\t\t\t\t\t\t\t\t\t</td>\n" +
+								"\t\t\t\t\t\t\t\t\t<td>\n" +
+								"\t\t\t\t\t\t\t\t\t\t"+(item.discount*10)+"%\n" +
+								"\t\t\t\t\t\t\t\t\t</td>\n" +
+								"\t\t\t\t\t\t\t\t\t<td>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<i name= \'"+item.id+"\'  value='"+item.commodityNum+"' />\n" +
+								"\t\t\t\t\t\t\t\t\t</td>\n" +
+								"\t\t\t\t\t\t\t\t\t<td>\n" +
+								"\t\t\t\t\t\t\t\t\t\t"+item.originalCost+"$\n" +
+								"\t\t\t\t\t\t\t\t\t</td>\n" +
+								"\t\t\t\t\t\t\t\t\t<td>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<strong>"+(item.originalCost*item.commodityNum)+"$</strong>\n" +
+								"\t\t\t\t\t\t\t\t\t</td>\n"
+
+					})
+					$("#tab11").html(value);
+
+
+					var  totalMoney = data.totalOriginalMoney+"$";
+					console.log(totalMoney)
+					console.log($("#total_money").text())
+					$("#total_money").text(totalMoney)
+					//location.href="cart-2.html";
+				},
+
+				error: function () {
+					//请求出错处理
+				}
+			});
+		}
+
+
+
+
+		$('button[name="wx"]').click(function () {
+
+			console.log($('button[name="wx"]').css("background-color"))
+			$('button[name="wx"]').css("background-color","#02DF82");
+
+			$('button[name="zfb"]').css("background-color","#E0E0E0")
+
+		});
+		$('button[name="zfb"]').click(function () {
+			var wx = document.getElementsByName("wx")[0];
+
+
+			$('button[name="zfb"]').css("background-color","#02DF82");
+
+
+			$('button[name="wx"]').css("background-color","#E0E0E0");
+
+		})
+
+		$(function () {
+			getPay()
+
+
+		})
+
+	</script>
   
 </body>
 </html>

@@ -66,4 +66,8 @@ END as vip_discount;
   <update id="updateShopCartNum" parameterType="com.ssm.pojo.ShoppingCart">
     update t_shopping_cart set commodity_num=#{commodityNum} WHERE id=#{id}
   </update>
+
+    <delete id="delAllShopCartByUserId">
+        DELETE FROM t_shopping_cart WHERE user_id =#{userid}
+    </delete>
 </mapper>

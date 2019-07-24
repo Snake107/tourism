@@ -180,7 +180,7 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail">
 							<div id="total_cart">
-								Total <span class="float-right">69.00$</span>
+								总价格 <span class="float-right" id="total_money" >69.00$</span>
 							</div>
 							<ul class="cart_details">
 								<li>From <span>02-11-18</span></li>
@@ -188,7 +188,7 @@
 								<li>Adults <span>2</span></li>
 								<li>Childs <span>1</span></li>
 							</ul>
-							<a href="cart-2.html" class="btn_1 full-width purchase">Checkout</a>
+							<a href="#" class="btn_1 full-width purchase" onclick="pay()">选择支付方式</a>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 					</aside>
@@ -201,6 +201,7 @@
 	</main>
 	<!--/main-->
 		<script type="text/javascript">
+            var payObj;
 			function delById(obj) {
 
 				//alert(obj)
@@ -241,6 +242,7 @@
 					success:function(data){
 						console.log(data)
 						//请求成功时处理
+                        payObj=data
 						var value ="";
 						$.each(data.shoppingCartList,function (i, item){
 							value += "<tr>\n" +
@@ -268,6 +270,11 @@
 									"\t\t\t\t\t\t\t\t</tr>"
 						})
 						$("#tab1").html(value);
+                        var  totalMoney = data.totalOriginalMoney+"$";
+                        console.log(totalMoney)
+                        console.log($("#total_money").text())
+                        $("#total_money").text(totalMoney)
+
 					},
 
 					error:function(){
@@ -275,7 +282,6 @@
 					}
 				});
 			}
-
 			function changeShopCart(obj){
 				var element = document.getElementsByName(obj)[0];
 				console.log(element.value)
@@ -302,6 +308,33 @@
 					}
 				});
 			}
+            function pay(){
+			    console.log(payObj)
+                /*cart-2.html*/
+                $.ajax({
+                    url: "/tourism/buycart/toPay",    //请求的url地址
+                    dataType: "json",   //返回格式为json
+                    async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(
+                        {
+                            "totalOriginalMoney":payObj.totalOriginalMoney,
+                            "shoppingCartList":payObj.shoppingCartList
+                        }
+                    ),    //参数值
+                    type: "POST",   //请求方式
+                    success: function (data) {
+                        console.log(data)
+                        //请求成功时处理
+                        location.href="cart-2.html";
+                    },
+
+                    error: function () {
+                        //请求出错处理
+                    }
+                });
+
+            }
 
 			$(function () {
 				getShopCart();

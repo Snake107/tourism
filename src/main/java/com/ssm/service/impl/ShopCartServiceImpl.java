@@ -75,4 +75,13 @@ public class ShopCartServiceImpl implements ShopCartService {
         }
         return false;
     }
+
+    @Override
+    public boolean delAllShopCartByUserId(Integer userId) {
+        Integer rSet = shoppingCartMapperExt.delAllShopCartByUserId(userId);
+        if (rSet>0){
+            return true;
+        }
+        return false;
+    }
 }

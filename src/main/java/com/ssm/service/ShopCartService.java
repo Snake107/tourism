@@ -65,4 +65,11 @@ public interface ShopCartService {
      * @return
      */
     boolean updateShopCartNum(ShoppingCart shoppingCart);
+
+    /**
+     * 清空购物车
+     * @param userId
+     * @return
+     */
+    boolean delAllShopCartByUserId(Integer userId);
 }

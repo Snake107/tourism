@@ -63,4 +63,11 @@ public interface ShoppingCartMapperExt extends Mapper<ShoppingCart> {
      * @return
      */
     Integer updateShopCartNum(ShoppingCart shoppingCart);
+
+    /**
+     * 清空购物车
+     * @param userId
+     * @return
+     */
+    Integer delAllShopCartByUserId(Integer userId);
 }
