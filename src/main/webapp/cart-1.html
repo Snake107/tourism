@@ -23,7 +23,7 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
-
+	<script src="js/jquery-2.2.4.min.js"></script>
 </head>
 
 <body>
@@ -79,7 +79,7 @@
 				<div class="container">
 					<div class="bs-wizard clearfix">
 						<div class="bs-wizard-step active">
-							<div class="text-center bs-wizard-stepnum">Your cart</div>
+							<div class="text-center bs-wizard-stepnum">你的购物车</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -87,7 +87,7 @@
 						</div>
 
 						<div class="bs-wizard-step disabled">
-							<div class="text-center bs-wizard-stepnum">Payment</div>
+							<div class="text-center bs-wizard-stepnum">支付</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -95,7 +95,7 @@
 						</div>
 
 						<div class="bs-wizard-step disabled">
-							<div class="text-center bs-wizard-stepnum">Finish!</div>
+							<div class="text-center bs-wizard-stepnum">支付完成!</div>
 							<div class="progress">
 								<div class="progress-bar"></div>
 							</div>
@@ -117,20 +117,26 @@
 							<thead>
 								<tr>
 									<th>
-										Item
+										商品
 									</th>
 									<th>
-										Discount
+										折扣价
 									</th>
 									<th>
-										Price
+										数量
 									</th>
 									<th>
-										Actions
+										价格
+									</th>
+									<th>
+										总价
+									</th>
+									<th>
+										删除
 									</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="tab1">
 								<tr>
 									<td>
 										<div class="thumb_cart">
@@ -148,72 +154,22 @@
 										<a href="#"><i class="icon-trash"></i></a>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div class="thumb_cart">
-											<img src="http://via.placeholder.com/150x150/ccc/fff/thumb_cart_2.jpg" alt="Image">
-										</div>
-										<span class="item_cart">At deseruisse scriptorem</span>
-									</td>
-									<td>
-										0%
-									</td>
-									<td>
-										<strong>15,50$</strong>
-									</td>
-									<td class="options" style="width:5%; text-align:center;">
-										<a href="#"><i class="icon-trash"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="thumb_cart">
-											<img src="http://via.placeholder.com/150x150/ccc/fff/thumb_cart_3.jpg" alt="Image">
-										</div>
-										<span class="item_cart">Ea vel semper quaerendum</span>
-									</td>
-									<td>
-										0%
-									</td>
-									<td>
-										<strong>24,71$</strong>
-									</td>
-									<td class="options" style="width:5%; text-align:center;">
-										<a href="#"><i class="icon-trash"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="thumb_cart">
-											<img src="http://via.placeholder.com/150x150/ccc/fff/thumb_cart_4.jpg" alt="Image">
-										</div>
-										<span class="item_cart">Ei has exerci graecis</span>
-									</td>
-									<td>
-										0%
-									</td>
-									<td>
-										<strong>24,71$</strong>
-									</td>
-									<td class="options" style="width:5%; text-align:center;">
-										<a href="#"><i class="icon-trash"></i></a>
-									</td>
-								</tr>
+
 							</tbody>
 						</table>
 						<div class="cart-options clearfix">
 							<div class="float-left">
 								<div class="apply-coupon">
 									<div class="form-group">
-										<input type="text" name="coupon-code" value="" placeholder="Your Coupon Code" class="form-control">
+										<input type="text" name="coupon-code" value="" placeholder="优惠券码" class="form-control">
 									</div>
 									<div class="form-group">
-										<button type="button" class="btn_1 outline">Apply Coupon</button>
+										<button type="button" class="btn_1 outline">申请优惠券</button>
 									</div>
 								</div>
 							</div>
 							<div class="float-right fix_mobile">
-								<button type="button" class="btn_1 outline">Update Cart</button>
+								<button type="button" class="btn_1 outline" onclick="getShopCart()">更新购物车</button>
 							</div>
 						</div>
 						<!-- /cart-options -->
@@ -244,6 +200,120 @@
 		<!-- /bg_color_1 -->
 	</main>
 	<!--/main-->
+		<script type="text/javascript">
+			function delById(obj) {
+
+				//alert(obj)
+				$.ajax({
+					url: "/tourism/buycart/delShopCartByID",    //请求的url地址
+					dataType: "json",   //返回格式为json
+					async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+					contentType: "application/json;charset=utf-8",
+					data: JSON.stringify(
+							{
+								"id": obj
+							}
+					),    //参数值
+					type: "POST",   //请求方式
+					success: function (data) {
+						console.log(data)
+						//请求成功时处理
+						getShopCart();
+					},
+
+					error: function () {
+						//请求出错处理
+					}
+				});
+			}
+			function getShopCart(){
+				$.ajax({
+					url:"/tourism/buycart/getShopCartById",    //请求的url地址
+					dataType:"json",   //返回格式为json
+					async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+					contentType:"application/json;charset=utf-8",
+					data:JSON.stringify(
+							{
+								"id":"1"
+							}
+					),    //参数值
+					type:"POST",   //请求方式
+					success:function(data){
+						console.log(data)
+						//请求成功时处理
+						var value ="";
+						$.each(data.shoppingCartList,function (i, item){
+							value += "<tr>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<div class=\"thumb_cart\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t<img src=\"http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg\" alt=\"Image\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<span class=\"item_cart\">"+item.commodityName+"</span>\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>\n" +
+									"\t\t\t\t\t\t\t\t\t\t"+(item.discount*10)+"%\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<input name= \'"+item.id+"\' type=\"number\" value='"+item.commodityNum+"' onchange='changeShopCart(this.name)'/>\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>\n" +
+									"\t\t\t\t\t\t\t\t\t\t"+item.originalCost+"$\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<strong>"+(item.originalCost*item.commodityNum)+"$</strong>\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t\t<td class=\"options\" style=\"width:5%; text-align:center;\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t<a name=\'"+item.id+"\' href=\"#\" onclick='delById(this.name)'><i class=\"icon-trash\"  ></i></a>\n" +
+									"\t\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t</tr>"
+						})
+						$("#tab1").html(value);
+					},
+
+					error:function(){
+						//请求出错处理
+					}
+				});
+			}
+
+			function changeShopCart(obj){
+				var element = document.getElementsByName(obj)[0];
+				console.log(element.value)
+				$.ajax({
+					url: "/tourism/buycart/updateShopCartNum",    //请求的url地址
+					dataType: "json",   //返回格式为json
+					async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+					contentType: "application/json;charset=utf-8",
+					data: JSON.stringify(
+							{
+								"id": obj,
+								"commodityNum":element.value
+							}
+					),    //参数值
+					type: "POST",   //请求方式
+					success: function (data) {
+						console.log(data)
+						//请求成功时处理
+						getShopCart();
+					},
+
+					error: function () {
+						//请求出错处理
+					}
+				});
+			}
+
+			$(function () {
+				getShopCart();
+
+
+			})
+
+
+
+
+
+		</script>
 	
 	<footer>
 		<div class="container margin_60_35">
@@ -381,7 +451,7 @@
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/jquery-2.2.4.min.js"></script>
+
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>

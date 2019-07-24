@@ -41,13 +41,12 @@ public class ShoppingCart {
     private String commodityPicture;
 
     /**
-     * 折扣价
+     * 折扣
      */
-    @Column(name = "discount_price")
-    private Double discountPrice;
+    private Double discount;
 
     /**
-     * 原价
+     * 价格
      */
     @Column(name = "original_cost")
     private Double originalCost;
@@ -167,36 +166,36 @@ public class ShoppingCart {
     }
 
     /**
-     * 获取折扣价
+     * 获取折扣
      *
-     * @return discount_price - 折扣价
+     * @return discount - 折扣
      */
-    public Double getDiscountPrice() {
-        return discountPrice;
+    public Double getDiscount() {
+        return discount;
     }
 
     /**
-     * 设置折扣价
+     * 设置折扣
      *
-     * @param discountPrice 折扣价
+     * @param discount 折扣
      */
-    public void setDiscountPrice(Double discountPrice) {
-        this.discountPrice = discountPrice;
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 
     /**
-     * 获取原价
+     * 获取价格
      *
-     * @return original_cost - 原价
+     * @return original_cost - 价格
      */
     public Double getOriginalCost() {
         return originalCost;
     }
 
     /**
-     * 设置原价
+     * 设置价格
      *
-     * @param originalCost 原价
+     * @param originalCost 价格
      */
     public void setOriginalCost(Double originalCost) {
         this.originalCost = originalCost;

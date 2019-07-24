@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.TCollectionMapperExt" >
+  <resultMap id="getCollectionByIdMap" type="com.ssm.dto.wish.CollectionDto" >
+
+
+
+    <collection property="collectionDtos" ofType="com.ssm.dto.wish.CollectionDto">
+        <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="scence_name" property="name" />
+      <result column="p_type" property="bigType"  />
+      <result column="description" property="description"  />
+      <result column="picture" property="picture"  />
+      <result column="price" property="price"  />
+      <result column="views" property="views"  />
+      <result column="mark" property="mark"  />
+      <result column="tag_name" property="tagName"  />
+      <result column="userid" property="userid"  />
+      <result column="nick_name" property="nickName"  />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+
+     id, commodity_id, big_type, user_id, flag
+  </sql>
+  <select id="getCollectionById" parameterType="INTEGER" resultMap="getCollectionByIdMap">
+    SELECT tab1.*,tu.id userid,tu.nick_name from t_collection c LEFT JOIN (SELECT s.*,tt.tag_name from (SELECT id,scence_name,p_type,description,picture,price,views,mark from t_scence
+union
+SELECT id,hotel_name,p_type,description,picture,price,views,mark from t_hotel
+union
+SELECT  id,restaurant_name,p_type,description,picture,price,views,mark from t_restaurant) s LEFT JOIN  t_commodity_tag  ct
+on s.id = ct.commodity_id and s.p_type=ct.big_type
+LEFT JOIN  t_tags tt on tt.id=ct.tag_id) tab1 on c.commodity_id=tab1.id and c.big_type=tab1.p_type
+LEFT JOIN t_user tu on c.user_id=tu.id where tu.id = #{id}
+  </select>
+
+
+  <insert id="addCollection" parameterType="com.ssm.dto.wish.CollectionDto">
+    INSERT INTO t_collection (commodity_id,big_type,user_id) VALUES (#{id},#{pType},#{userid});
+  </insert>
+
+  <delete id="delCollection" parameterType="com.ssm.dto.wish.CollectionDto">
+   DELETE from  t_collection  where id = #{id};
+  </delete>
+  
+
+</mapper>

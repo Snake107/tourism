@@ -73,6 +73,12 @@ public class Scence {
     private Integer scheduleId;
 
     /**
+     * 标签id
+     */
+    @Column(name = "tags_id")
+    private Integer tagsId;
+
+    /**
      * 旅行社id
      */
     @Column(name = "travel_agency_id")
@@ -299,6 +305,24 @@ public class Scence {
      */
     public void setScheduleId(Integer scheduleId) {
         this.scheduleId = scheduleId;
+    }
+
+    /**
+     * 获取标签id
+     *
+     * @return tags_id - 标签id
+     */
+    public Integer getTagsId() {
+        return tagsId;
+    }
+
+    /**
+     * 设置标签id
+     *
+     * @param tagsId 标签id
+     */
+    public void setTagsId(Integer tagsId) {
+        this.tagsId = tagsId;
     }
 
     /**

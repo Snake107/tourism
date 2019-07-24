@@ -73,6 +73,12 @@ public class Restaurant {
     private Integer programId;
 
     /**
+     * 标签id
+     */
+    @Column(name = "tags_id")
+    private Integer tagsId;
+
+    /**
      * 旅行社id
      */
     @Column(name = "travel_agency_id")
@@ -299,6 +305,24 @@ public class Restaurant {
      */
     public void setProgramId(Integer programId) {
         this.programId = programId;
+    }
+
+    /**
+     * 获取标签id
+     *
+     * @return tags_id - 标签id
+     */
+    public Integer getTagsId() {
+        return tagsId;
+    }
+
+    /**
+     * 设置标签id
+     *
+     * @param tagsId 标签id
+     */
+    public void setTagsId(Integer tagsId) {
+        this.tagsId = tagsId;
     }
 
     /**

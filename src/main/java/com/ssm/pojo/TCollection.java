@@ -28,8 +28,6 @@ public class TCollection {
     @Column(name = "user_id")
     private Integer userId;
 
-    private Integer flag;
-
     /**
      * 获取id
      *
@@ -100,19 +98,5 @@ public class TCollection {
      */
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    /**
-     * @return flag
-     */
-    public Integer getFlag() {
-        return flag;
-    }
-
-    /**
-     * @param flag
-     */
-    public void setFlag(Integer flag) {
-        this.flag = flag;
     }
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.ShoppingCartMapperExt" >
+  <resultMap id="ShopCartDtoMap" type="com.ssm.dto.shopcart.ShopCartDto" >
+      <result column="totalOriginalMoney" property="totalOriginalMoney" ></result>
+    <collection property="shoppingCartList" ofType="com.ssm.pojo.ShoppingCart">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="user_id" property="userId" jdbcType="INTEGER" />
+      <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+      <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+      <result column="big_type" property="bigType" jdbcType="INTEGER" />
+      <result column="commodity_picture" property="commodityPicture" jdbcType="VARCHAR" />
+      <result column="discount" property="discount" jdbcType="DOUBLE" />
+      <result column="original_cost" property="originalCost" jdbcType="DOUBLE" />
+      <result column="commodity_num" property="commodityNum" jdbcType="INTEGER" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+   id, user_id, commodity_id, commodity_name, big_type, commodity_picture, discount,
+    original_cost, commodity_num
+  </sql>
+
+  <sql id="Base_Column_List2" >
+
+       user_id, commodity_id, commodity_name, big_type, commodity_picture, discount,
+    original_cost, commodity_num
+  </sql>
+
+  <select id="getShopCartById" resultMap="ShopCartDtoMap">
+    SELECT<include refid="Base_Column_List"/> from t_shopping_cart where user_id = #{userId}
+  </select>
+
+  <insert id="addShopCart" parameterType="com.ssm.pojo.ShoppingCart">
+    INSERT into t_shopping_cart (<include refid="Base_Column_List2"/>)
+    VALUES (#{userId},#{commodityId},#{commodityName},#{bigType},#{commodityPicture},#{discount},
+    #{originalCost},#{commodityNum})
+  </insert>
+
+
+  <select id="getAllShopCartByUserId" resultMap="ShopCartDtoMap">
+    SELECT SUM(original_cost*commodity_num) as totalOriginalMoney,<include refid="Base_Column_List"/> from t_shopping_cart where user_id = #{id}
+  </select>
+
+  <update id="addShopCartByUpdate" parameterType="com.ssm.pojo.ShoppingCart">
+        UPDATE t_shopping_cart SET	commodity_num=#{commodityNum} WHERE user_id=#{userId} and commodity_id = #{commodityId} and big_type =#{bigType}
+  </update>
+
+  <delete id="delShopCartByID">
+    DELETE FROM t_shopping_cart WHERE id =#{id}
+  </delete>
+
+  <select id="getTotalMoney" resultMap="ShopCartDtoMap">
+    SELECT SUM(original_cost*commodity_num) as totalOriginalMoney
+from t_shopping_cart  where user_id = #{id}
+  </select>
+  
+  <select id="ifMember"  resultType="double">
+   SELECT  CASE
+	WHEN (SELECT b.vip_discount from t_vip a,t_vip_meal b where  a.vip_meal = b.id and   a.user_id = #{id} and a.end_time >= NOW() )  is null THEN
+		0
+	ELSE
+		1
+END as vip_discount;
+  </select>
+
+  <update id="updateShopCartNum" parameterType="com.ssm.pojo.ShoppingCart">
+    update t_shopping_cart set commodity_num=#{commodityNum} WHERE id=#{id}
+  </update>
+</mapper>

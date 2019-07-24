@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean addUser(User user ) {
         int rSet = userMapperExt.addUser(user);
+
         if (rSet > 0){
              return true;
         }

@@ -23,11 +23,6 @@ public class Hotel {
     private String picture;
 
     /**
-     * 描述
-     */
-    private String description;
-
-    /**
      * 价格
      */
     private Double price;
@@ -61,6 +56,12 @@ public class Hotel {
     private Integer pType;
 
     /**
+     * 标签id
+     */
+    @Column(name = "tags_id")
+    private Integer tagsId;
+
+    /**
      * 点击量
      */
     private Integer views;
@@ -72,6 +73,11 @@ public class Hotel {
     private Integer travelAgencyId;
 
     private Integer flag;
+
+    /**
+     * 描述
+     */
+    private String description;
 
     /**
      * @return id
@@ -135,24 +141,6 @@ public class Hotel {
      */
     public void setPicture(String picture) {
         this.picture = picture == null ? null : picture.trim();
-    }
-
-    /**
-     * 获取描述
-     *
-     * @return description - 描述
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * 设置描述
-     *
-     * @param description 描述
-     */
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     /**
@@ -264,6 +252,24 @@ public class Hotel {
     }
 
     /**
+     * 获取标签id
+     *
+     * @return tags_id - 标签id
+     */
+    public Integer getTagsId() {
+        return tagsId;
+    }
+
+    /**
+     * 设置标签id
+     *
+     * @param tagsId 标签id
+     */
+    public void setTagsId(Integer tagsId) {
+        this.tagsId = tagsId;
+    }
+
+    /**
      * 获取点击量
      *
      * @return views - 点击量
@@ -311,5 +317,23 @@ public class Hotel {
      */
     public void setFlag(Integer flag) {
         this.flag = flag;
+    }
+
+    /**
+     * 获取描述
+     *
+     * @return description - 描述
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * 设置描述
+     *
+     * @param description 描述
+     */
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }
