@@ -5,6 +5,8 @@ import com.ssm.pojo.TCollection;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.List;
+
 /**
  * @version 1.0.0
  * @auther Snake
@@ -13,6 +15,12 @@ import tk.mybatis.mapper.common.Mapper;
 
 @Repository
 public interface TCollectionMapperExt extends Mapper<TCollection> {
+
+    /**
+     * 首页 根据 用户ID 查询已收藏的商品
+     * @return
+     */
+    List<TCollection> selectCollectionByUserId(Integer userId);
     /**
      * 获取心愿单BYid
      * @param userid

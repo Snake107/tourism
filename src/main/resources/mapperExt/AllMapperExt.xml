@@ -3,6 +3,33 @@
 <mapper namespace="com.ssm.dao.mappingExt.AllSearchMapperExt" >
 
 
+				<!--<when test="keyword != null and classification != null">-->
+					<!--CONCAT(-->
+					<!--city.country,-->
+					<!--city.city,-->
+					<!--city.province,-->
+					<!--a.name-->
+					<!--) LIKE #{keyword} and a.p_type = #{classification}-->
+				<!--</when>-->
+
+				<!--<when test="region != null and classification != null">-->
+					<!--CONCAT(city.country,city.city,city.province) LIKE #{region} and a.p_type = #{classification}-->
+				<!--</when>-->
+
+				<!--<when test="keyword != null">-->
+					<!--a.name  LIKE #{keyword}-->
+				<!--</when>-->
+
+				<!--<when test="region != null">-->
+					<!--CONCAT(city.country,city.city,city.province) LIKE #{region}-->
+				<!--</when>-->
+
+				<!--<when test="classification != null">-->
+					<!--and  a.p_type = #{classification}-->
+				<!--</when>-->
+			<!--</choose>-->
+		<!--</where>-->
+<!--</select>-->
 
 
 	<select id="SearchAll" parameterType="com.ssm.vo.SearchVo" resultType="com.ssm.dto.allsearch.SearchDto">
@@ -141,7 +168,16 @@
 			</if>
 		</where>
 
-
-
 	</select>
+
+
+	<update id="ScenceViewsAddOne" parameterType="int" >
+		update t_scence set views=views+1 where id = #{commodityId};
+	</update>
+	<update id="HotelViewsAddOne" parameterType="int" >
+		update t_hotel set views=views+1 where id = #{commodityId};
+	</update>
+	<update id="RestaurantViewsAddOne" parameterType="int" >
+		update t_restaurant set views=views+1 where id = #{commodityId};
+	</update>
 </mapper>
