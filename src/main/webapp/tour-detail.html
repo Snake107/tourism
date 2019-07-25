@@ -313,7 +313,7 @@
 								</div>
 							</div>
 							<a href="cart-1.html" class="btn_1 full-width purchase">购买</a>
-							<a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i>添加到购物车</a>
+							<a href="wishlist.html" id="ShoppingCar" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i>添加到购物车</a>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 						<ul class="share-buttons">
@@ -603,8 +603,8 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				data: JSON.stringify({
-					"bigType":"1",
-					"commodityId":"1"
+					"bigType":type,
+					"commodityId":id
 				}),
 				success: function (data) {
 					$("#star5").css("width",data['mark5Per']*100+"%");
@@ -685,8 +685,8 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				data: JSON.stringify({
-					"bigType":"1",
-					"commodityId":"1",
+					"bigType":type,
+					"commodityId":id,
 					"content":$("#review_text").val(),
 					"parentId":0,
 					"mark":$("#rating_review").val()
