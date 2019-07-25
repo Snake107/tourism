@@ -7,8 +7,12 @@ import com.ssm.email.SendEmail;
 import com.ssm.pojo.User;
 import com.ssm.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -125,5 +129,77 @@ public class UserServiceImpl implements UserService {
             return userMapperExt.updatePassword(changeParamter);
         }
         return 0;
+    }
+
+    /**
+     * 用户提交头像
+     * @param request
+     * @param file
+     */
+    @Override
+    public Object updateIcon(HttpServletRequest request, MultipartFile file) {
+        //获取文件原名
+        String filename = file.getOriginalFilename();
+        //获取存储路径
+        String path = request.getSession().getServletContext().getRealPath("/img");
+        //获取文件后缀
+        String fileSuffix = filename.substring(filename.indexOf("."), filename.length());
+
+        File file1 = new File(path);
+        //创建文件夹
+        if(!file1.exists()){
+            file1.mkdirs();
+        }
+        //创建文件对象
+        String newFileName = UUID.randomUUID()+fileSuffix;
+        file1 = new File(path,newFileName);
+        System.out.println(file1.getAbsolutePath());
+        if(!file1.exists()){
+            try {
+                file1.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            // 写入文件
+            file.transferTo(file1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return newFileName;
+    }
+
+    /**
+     * 修改用户信息
+     * @param user  用户信息
+     * @return      影响行数
+     */
+    @Override
+    public Integer updateUser(User user) {
+        return userMapperExt.updateUser(user);
+    }
+
+    /**
+     * 根据 id 获取用户信息
+     * @return
+     */
+    @Override
+    public User getUserById(int id) {
+        return userMapperExt.getUserById(id);
+    }
+
+    /**
+     * 原密码的校验
+     * @param user
+     * @return      true 密码正确 , false 密码错误
+     */
+    @Override
+    public boolean checkPassword(User user) {
+        List<User> list = userMapperExt.checkPassword(user);
+        if (list.size() > 0){
+            return true;
+        }
+        return false;
     }
 }

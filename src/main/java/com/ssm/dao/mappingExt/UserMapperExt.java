@@ -16,12 +16,6 @@ public interface UserMapperExt extends Mapper<User> {
      */
     Integer addUser(User user);
 
-
-    void changePassword(ChangeParamter changeParamter);
-
-    void recover(ChangeParamter changeParamter);
-
-
     /**
      * 检查用户名是否存在
      * @param user  用户信息对象
@@ -68,4 +62,25 @@ public interface UserMapperExt extends Mapper<User> {
      * @return                  影响行数
      */
     Integer updatePassword(ChangeParamter changeParamter);
+
+    /**
+     * 修改用户信息
+     * @param user  用户信息
+     * @return      影响行数
+     */
+    Integer updateUser(User user);
+
+    /**
+     * 根据 id 获取用户信息
+     * @param id
+     * @return
+     */
+    User getUserById(int id);
+
+    /**
+     * 原密码的校验
+     * @param user
+     * @return
+     */
+    List<User> checkPassword(User user);
 }

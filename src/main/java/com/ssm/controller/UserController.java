@@ -7,10 +7,8 @@ import com.ssm.pojo.ext.UserExt;
 import com.ssm.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -136,5 +134,106 @@ public class UserController {
         return userService.changePassword(changeParamter);
     }
 
+    /**
+     * 用户上传头像
+     * @param request
+     * @param file
+     * @return
+     */
+    @RequestMapping(value = "updateIcon",method= RequestMethod.POST)
+    @ResponseBody
+    public Object uploadPic(HttpServletRequest request, @RequestParam(name = "file",required = true) MultipartFile file){
+        return userService.updateIcon(request,file);
+    }
+
+    /**
+     * 信息回显
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "getUser",method = RequestMethod.POST)
+    @ResponseBody
+    public User getUser(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        return user;
+    }
+
+    /**
+     * 判断用户是否有登录
+     * @param request
+     * @return          true 为已登录 , false 为未登录
+     */
+    @RequestMapping(value = "checkUserSession",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkUserSession(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 注销用户 , 并且清除 cookie
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "logoutUser",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean logoutUser(HttpServletRequest request,HttpServletResponse response){
+        // 清除 session
+        request.getSession().removeAttribute("user");
+
+        // 清除 cookie
+        Cookie email1 = new Cookie("email", null);
+        Cookie password1 = new Cookie("password", null);
+        email1.setMaxAge(0);
+        password1.setMaxAge(0);
+        email1.setPath(request.getContextPath());
+        password1.setPath(request.getContextPath());
+        response.addCookie(email1);
+        response.addCookie(password1);
+        return true;
+    }
+
+    /**
+     * 用户信息修改
+     * @param user
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean uploadUser(@RequestBody User user,HttpServletRequest request){
+        User user1 = (User) request.getSession().getAttribute("user");
+        int id = user1.getId();
+        user.setId(id);
+        Integer rSet = userService.updateUser(user);
+        user1 = userService.getUserById(id);
+        if (rSet > 0){
+            request.getSession().setAttribute("user",user1);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 原密码的校验
+     * @param user
+     * @param request
+     * @return          true 密码正确 , false 密码错误
+     */
+    @RequestMapping(value = "/checkPassword",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkPassword(@RequestBody User user,HttpServletRequest request){
+        User user1 = (User) request.getSession().getAttribute("user");
+        user.setId(user1.getId());
+        // MD5 加密
+        String password = user.getPassword();
+        byte[] bytes = password.getBytes();
+        String passwordMD5 = DigestUtils.md5DigestAsHex(bytes);
+        user.setPassword(passwordMD5);
+        return userService.checkPassword(user);
+    }
 }
 

@@ -3,6 +3,9 @@ package com.ssm.service;
 import com.ssm.dto.ChangeParamter;
 import com.ssm.dto.ForgotParameter;
 import com.ssm.pojo.User;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author: FatCao
@@ -23,5 +26,12 @@ public interface UserService {
     Object sendEmail(ForgotParameter forgotParameter);
     // 通过邮箱验证,修改用户密码
     Integer changePassword(ChangeParamter changeParamter);
-
+    // 用户提交头像
+    Object updateIcon(HttpServletRequest request, MultipartFile file);
+    // 修改用户信息
+    Integer updateUser(User user);
+    // 根据 id 获取用户信息
+    User getUserById(int id);
+    // 修改密码 , 原密码的校验
+    boolean checkPassword(User user);
 }
