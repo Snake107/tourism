@@ -23,7 +23,6 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -266,7 +265,19 @@
 	<!-- /Sign In Popup -->
 	
 	<div id="toTop"></div><!-- Back to top button -->
-	
+
+	<style>
+		.inner {
+			width: 100%;
+			min-height: 80px;
+			display: -webkit-box;
+			text-overflow: ellipsis;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 4;
+			word-break: break-all;
+			overflow: hidden;
+		}
+	</style>
 	<!-- COMMON SCRIPTS -->
     <script src="js/jquery-2.2.4.min.js"></script>
 
@@ -294,9 +305,9 @@
 								"\t\t\t<small>Historic</small>\n" +
 								"\t\t\t<div class=\"read_more\"><span>Read more</span></div>\n" +
 								"\t\t</figure>\n" +
-								"\t\t<div class=\"wrapper\">\n" +
+								"\t\t<div class=\"wrapper \">\n" +
 								"\t\t\t<h3><a href=\"tour-detail.html\">"+data[i]['name']+"</a></h3>\n" +
-								"\t\t\t<p>"+data[i]['description']+"</p>\n" +
+								"\t\t\t<p class='inner'>"+data[i]['description']+"</p>\n" +
 								"\t\t\t<span class=\"price\">From <strong>$"+data[i]['price']+"</strong> /per person</span>\n" +
 								"\t\t</div>\n" +
 								"\t\t<ul>\n" +
