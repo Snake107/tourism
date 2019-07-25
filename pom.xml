@@ -43,6 +43,13 @@
         </dependency>
         <!--druid end-->
 
+        <!--java邮箱发送依赖包-->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.5.0-b01</version>
+        </dependency>
+
         <!--MyBatis start-->
         <dependency>
             <groupId>org.mybatis</groupId>

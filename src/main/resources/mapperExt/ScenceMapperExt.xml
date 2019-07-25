@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.dao.mappingExt.ScenceMapperExt">
-	<select id="selectIndexSixScenceInfo" resultType="com.ssm.pojo.ext.ScenceExt">
+<mapper namespace="com.ssm.dao.mappingExt.ScenceMapperExt" >
+
+    <select id="getScenceNavi" parameterType="com.ssm.dto.ScenceNaviParameter" resultType="com.ssm.vo.ScenceNavi">
+        SELECT
+            a.*,
+        IF
+            ( ISNULL( b.hotel_num ), 0, b.hotel_num ) hotel_num,
+        IF
+            ( ISNULL( c.restaurant_num ), 0, c.restaurant_num ) restaurant_num
+        FROM
+            t_city a
+            LEFT JOIN ( SELECT city_id, count(*) hotel_num FROM t_hotel GROUP BY city_id ) b ON a.id = b.city_id
+            LEFT JOIN ( SELECT city_id, count(*) restaurant_num FROM t_restaurant GROUP BY city_id ) c ON a.id = c.city_id
+        <if test="orderBy!=null and orderBy!=''">
+            order by #{orderBy}
+        </if>
+        <if test="limit!=null and limit!=''">
+            limit #{limit}
+        </if>
+    </select>
+
+    <select id="selectIndexSixScenceInfo" resultType="com.ssm.pojo.ext.ScenceExt">
 		SELECT
 			t_sc.id,
 			t_sc.scence_name,

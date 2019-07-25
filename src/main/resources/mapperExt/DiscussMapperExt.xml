@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.DiscussMapperExt" >
+
+    <resultMap id="discusslist" type="com.ssm.vo.DoubleDiscuss">
+        <id property="id" column="id" />
+        <result property="content" column="content" />
+        <result property="userId" column="user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="mark" column="mark" />
+        <result property="nickName" column="nick_name" />
+        <result property="icon" column="icon" />
+
+
+        <!-- 定义多对一关联信息（每个销售人员对应一个登录帐号） -->
+        <collection property="baseDiscussList" ofType="com.ssm.vo.BaseDiscuss">
+            <id property="id" column="id1" />
+            <result property="userId" column="user_id1" />
+            <result property="content" column="content1" />
+            <result property="createTime" column="create_time1" />
+            <result property="mark" column="mark1" />
+            <result property="nickName" column="nick_name1" />
+            <result property="icon" column="icon1" />
+        </collection>
+    </resultMap>
+
+    <insert id="addComment" parameterType="com.ssm.pojo.Comment">
+        INSERT INTO `t_comment`(`big_type`, `commodity_id`, `user_id`, `content`, `parent_id`, `create_time`, `mark`, `flag`)
+        VALUES (#{bigType}, #{commodityId}, #{userId}, #{content}, #{parentId}, #{createTime}, #{mark}, 1);
+    </insert>
+
+    <select id="getCommentList" parameterType="com.ssm.dto.CommentParameter" resultMap="discusslist">
+        SELECT
+            a.id,
+            a.user_id,
+            a.content,
+            a.mark,
+            a.create_time,
+            c.nick_name,
+            c.icon,
+            b.id id1,
+            b.user_id user_id1,
+            b.content content1,
+            b.create_time create_time1,
+            d.icon icon1,
+            d.nick_name nick_name1
+        FROM
+            t_comment a
+            LEFT JOIN t_comment b ON a.id = b.parent_id
+            LEFT JOIN t_user c ON a.user_id = c.id
+            LEFT JOIN t_user d ON b.user_id = d.id
+        WHERE
+            a.parent_id = 0
+            AND a.flag = 1
+            AND a.big_type = #{bigType}
+            AND a.commodity_id = #{commodityId}
+            limit #{start}, #{limit}
+    </select>
+
+    <select id="getCommentMark" parameterType="com.ssm.dto.CommentParameter" resultType="com.ssm.vo.CountMark">
+        select (SELECT count(*) from t_comment where commodity_id = #{commodityId} and big_type = #{bigType} and flag = 1 and mark = 1 and parent_id = 0)  mark1,
+             (SELECT count(*) from t_comment where commodity_id = #{commodityId} and big_type = #{bigType} and flag = 1 and mark = 2 and parent_id = 0)  mark2,
+             (SELECT count(*) from t_comment where commodity_id = #{commodityId} and big_type = #{bigType} and flag = 1 and mark = 3 and parent_id = 0)  mark3,
+             (SELECT count(*) from t_comment where commodity_id = #{commodityId} and big_type = #{bigType} and flag = 1 and mark = 4 and parent_id = 0)  mark4,
+             (SELECT count(*) from t_comment where commodity_id = #{commodityId} and big_type = #{bigType} and flag = 1 and mark = 5 and parent_id = 0)  mark5
+    </select>
+</mapper>

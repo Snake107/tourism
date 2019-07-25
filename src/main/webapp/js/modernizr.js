@@ -180,7 +180,7 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     function setCss( str ) {
-        mStyle.cssText = str;
+        mStyle.cssText = str1;
     }
 
     function setCssAll( str1, str2 ) {
@@ -192,7 +192,7 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     function contains( str, substr ) {
-        return !!~('' + str).indexOf(substr);
+        return !!~('' + str1).indexOf(substr);
     }
 
     function testProps( props, prefixed ) {

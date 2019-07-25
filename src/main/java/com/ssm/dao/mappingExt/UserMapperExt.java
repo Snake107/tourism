@@ -1,5 +1,6 @@
 package com.ssm.dao.mappingExt;
 
+
 import com.ssm.dto.ChangeParamter;
 import com.ssm.dto.ForgotParameter;
 import com.ssm.pojo.User;
@@ -14,6 +15,12 @@ public interface UserMapperExt extends Mapper<User> {
      * @return      影响行数
      */
     Integer addUser(User user);
+
+
+    void changePassword(ChangeParamter changeParamter);
+
+    void recover(ChangeParamter changeParamter);
+
 
     /**
      * 检查用户名是否存在

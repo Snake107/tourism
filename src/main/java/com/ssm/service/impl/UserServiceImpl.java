@@ -104,8 +104,8 @@ public class UserServiceImpl implements UserService {
         forgotParameter.setCode(string);
         try {
             SendEmail.sendQQMails(forgotParameter.getEmail(),str);
-            userMapperExt.setCode(forgotParameter);
         } catch (Exception e) {
+            userMapperExt.setCode(forgotParameter);
             e.printStackTrace();
         }
         return null;

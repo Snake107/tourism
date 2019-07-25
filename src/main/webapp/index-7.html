@@ -836,13 +836,61 @@
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
+	<script>
 
+		//首页头部城市导航栏
+		var navi = function(){
+			$.ajax({
+				type: "POST",
+				url: "scence/navi/list",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"orderBy":"hotelNum desc",
+					"limit":"5"
+				}),
+				success: function (data) {
+					var str1="";
+					var str2="";
+					for (var i = 0; i < data.length; i++) {
+						str1 += "<li>\n" +
+								"\t<img src=\""+data[i]['picture'].replace("_thumb","")+"\" alt=\"\">\n" +
+								"\t<div class=\"meta\">\n" +
+								"\t\t<h3>"+data[i]['description']+"</h3>\n" +
+								"\t\t<div class=\"info\">\n" +
+								"\t\t\t<p><strong>"+data[i]['hotelNum']+"</strong> 酒店 - <strong>"+data[i]['restaurantNum']+"</strong> 餐厅</p>\n" +
+								"\t\t</div>\n" +
+								"\t\t<a href=\"all.html?keyword=&region="+data[i]['city']+"&classification=1\" class=\"btn_1\">Read more</a>\n" +
+								"\t</div>\n" +
+								"</li>\n";
+						str2 += "<li>\n" +
+								"\t<img src=\""+data[i]['picture']+"\" alt=\"\">\n" +
+								"\t<div class=\"caption\">\n" +
+								"\t\t<h3>"+data[i]['city']+" <span>"+data[i]['country']+"</span></h3>\n" +
+								"\t\t<small>￥"+data[i]['price']+" /人 <strong id=\"weather\" class=\"weather\"></strong></small>\n" +
+								"\t</div>\n" +
+								"</li>\n";
+					}
+					$("#slider ul").html(str1);
+					$("#carousel_slider_wp ul").html(str2);
+					console.log("scence/navi/list数据获取成功");
+				},error: function (data){
+					console("scence/navi/list数据获取失败")
+				}
+			})
+		}
+	</script>
+	<script>
+		$(function () {
+			navi();
+		})
+	</script>
 	<script type="text/javascript">
 		$(function () {
 			var data = "";
 			$.ajax({
 				type:"post",
-				url:"secence/selectIndexSixScenceInfo",
+				url:"scence/selectIndexSixScenceInfo",
 				async:false,
 				success:function (returnData) {
 					console.log(returnData)

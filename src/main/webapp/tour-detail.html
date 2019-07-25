@@ -215,16 +215,15 @@
 								<div class="row">
 									<div class="col-lg-3">
 										<div id="review_summary">
-											<strong>8.5</strong>
-											<em>Superb</em>
-											<small>Based on 4 reviews</small>
+											<strong id="mark"></strong>
+											<small id="markSum"></small>
 										</div>
 									</div>
 									<div class="col-lg-9">
 										<div class="row">
 											<div class="col-lg-10 col-9">
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+													<div id="star5" class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-3"><small><strong>5 stars</strong></small></div>
@@ -233,7 +232,7 @@
 										<div class="row">
 											<div class="col-lg-10 col-9">
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+													<div  id="star4" class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-3"><small><strong>4 stars</strong></small></div>
@@ -242,7 +241,7 @@
 										<div class="row">
 											<div class="col-lg-10 col-9">
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+													<div  id="star3" class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-3"><small><strong>3 stars</strong></small></div>
@@ -251,7 +250,7 @@
 										<div class="row">
 											<div class="col-lg-10 col-9">
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+													<div  id="star2" class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-3"><small><strong>2 stars</strong></small></div>
@@ -260,7 +259,7 @@
 										<div class="row">
 											<div class="col-lg-10 col-9">
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+													<div  id="star1" class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 											<div class="col-lg-2 col-3"><small><strong>1 stars</strong></small></div>
@@ -273,61 +272,9 @@
 
 							<hr>
 
-							<div class="reviews-container">
+							<div class="reviews-container" id="reviews-container_com">
 
-								<div class="review-box clearfix">
-									<figure class="rev-thumb"><img src="img/avatar1.jpg" alt="">
-									</figure>
-									<div class="rev-content">
-										<div class="rating">
-											<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-										</div>
-										<div class="rev-info">
-											Admin – April 03, 2016:
-										</div>
-										<div class="rev-text">
-											<p>
-												Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-											</p>
-										</div>
-									</div>
-								</div>
-								<!-- /review-box -->
-								<div class="review-box clearfix">
-									<figure class="rev-thumb"><img src="img/avatar2.jpg" alt="">
-									</figure>
-									<div class="rev-content">
-										<div class="rating">
-											<i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-										</div>
-										<div class="rev-info">
-											Ahsan – April 01, 2016:
-										</div>
-										<div class="rev-text">
-											<p>
-												Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-											</p>
-										</div>
-									</div>
-								</div>
-								<!-- /review-box -->
-								<div class="review-box clearfix">
-									<figure class="rev-thumb"><img src="img/avatar3.jpg" alt="">
-									</figure>
-									<div class="rev-content">
-										<div class="rating">
-											<i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-										</div>
-										<div class="rev-info">
-											Sara – March 31, 2016:
-										</div>
-										<div class="rev-text">
-											<p>
-												Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-											</p>
-										</div>
-									</div>
-								</div>
+
 								<!-- /review-box -->
 							</div>
 							<!-- /review-container -->
@@ -337,30 +284,16 @@
 
 							<div class="add-review">
 								<h5>Leave a Review</h5>
-								<form>
 									<div class="row">
-										<div class="form-group col-md-6">
-											<label>Name and Lastname *</label>
-											<input type="text" name="name_review" id="name_review" placeholder="" class="form-control">
-										</div>
-										<div class="form-group col-md-6">
-											<label>Email *</label>
-											<input type="email" name="email_review" id="email_review" class="form-control">
-										</div>
 										<div class="form-group col-md-6">
 											<label>Rating </label>
 											<div class="custom-select-form">
 											<select name="rating_review" id="rating_review" class="wide">
 												<option value="1">1 (lowest)</option>
 												<option value="2">2</option>
-												<option value="3">3</option>
+												<option value="3" selected>3</option>
 												<option value="4">4</option>
-												<option value="5" selected>5 (medium)</option>
-												<option value="6">6</option>
-												<option value="7">7</option>
-												<option value="8">8</option>
-												<option value="9">9</option>
-												<option value="10">10 (highest)</option>
+												<option value="5" >5 (highest)</option>
 											</select>
 											</div>
 										</div>
@@ -369,10 +302,9 @@
 											<textarea name="review_text" id="review_text" class="form-control" style="height:130px;"></textarea>
 										</div>
 										<div class="form-group col-md-12 add_top_20">
-											<input type="submit" value="Submit" class="btn_1" id="submit-review">
+											<input onclick="submitdiscuss()" type="submit" value="Submit" class="btn_1" id="submit-review">
 										</div>
 									</div>
-								</form>
 							</div>
 					</div>
 					<!-- /col -->
@@ -607,8 +539,148 @@
 			});
 		});
 	</script>
-	
-	
+
+	<script>
+
+		//评论细节
+		var getcommentdetail = function(){
+			$.ajax({
+				type: "POST",
+				url: "discuss/getcommentdetail",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"bigType":"1",
+					"commodityId":"1"
+				}),
+				success: function (data) {
+					$("#star5").css("width",data['mark5Per']*100+"%");
+					$("#star4").css("width",data['mark4Per']*100+"%");
+					$("#star3").css("width",data['mark3Per']*100+"%");
+					$("#star2").css("width",data['mark2Per']*100+"%");
+					$("#star1").css("width",data['mark1Per']*100+"%");
+					$("#mark").html( new Number(data['mark']).toFixed(1));
+					$("#markSum").html("已经有"+data['markSum']+"人点评");
+					console.log(data['mark1Per'])
+					console.log("discuss/getcommentdetail数据获取成功");
+				},error: function (data){
+					console("discuss/getcommentdetail数据获取失败")
+				}
+			})
+		}
+
+		//查询评论
+		var discuss = function(){
+			$.ajax({
+				type: "POST",
+				url: "discuss/getlist",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"limit":"100",
+					"start":"0",
+					"commodityId":"1",
+					"bigType":"1"
+				}),
+
+				success: function (data) {
+					var str1="";
+					console.log(data)
+					for (var i = 0, j = 0; i < data.length; i++, j=0) {
+						str1 +="<div class=\"review-box clearfix\">\n" +
+						"<figure class=\"rev-thumb\"><img src=\""+data[i]['icon']+"\" alt=\"\">\n" +
+						"</figure>\n" +
+						"<div class=\"rev-content\">\n" +
+						"<div class=\"rating\">\n";
+						for (; j < data[i]['mark']; j++) {
+							str1 += "<i class=\"icon_star voted\"></i>";
+						}
+						for (; j < 5; j++) {
+							str1 += "<i class=\"icon_star\"></i>";
+						}
+						str1+="</div>\n" +
+						"<div class=\"rev-info\">\n" +
+						""+data[i]['nickName']+" – "+ formatTime(data[i]['createTime'], 'Y-M-D')+":\n" +
+						"</div>\n" +
+						"<div class=\"rev-text\">\n" +
+						"<p>\n" +
+						""+data[i]['content']+"\n" +
+						"</p>\n" +
+						"</div>\n" +
+						"</div>\n" +
+						"</div>";
+					}
+					$("#reviews-container_com").html(str1);
+					console.log("discuss/getlist数据获取成功");
+				},error: function (data){
+					console("discuss/getlist数据获取失败")
+				}
+			})
+		}
+		//添加评论
+		var submitdiscuss = function(){
+			if ($("#review_text").val().length < 5){
+				alert("字符过短");
+				return;
+			}
+			$.ajax({
+				type: "POST",
+				url: "discuss/add",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"bigType":"1",
+					"commodityId":"1",
+					"content":$("#review_text").val(),
+					"parentId":0,
+					"mark":$("#rating_review").val()
+				}),
+				success: function (data) {
+					console.log("discuss/add数据获取成功");
+					location.reload();
+				},error: function (data){
+					console("discuss/add数据获取失败")
+				}
+			})
+		}
+
+
+	</script>
+	<script>
+		getcommentdetail();
+		discuss();
+	</script>
+	<script>
+		// 格式化日期，如月、日、时、分、秒保证为2位数
+		function formatNumber (n) {
+			n = n.toString()
+			return n[1] ? n : '0' + n;
+		}
+		// 参数number为毫秒时间戳，format为需要转换成的日期格式
+		function formatTime (number, format) {
+			var time = new Date(number)
+			var newArr = []
+			var formatArr = ['Y', 'M', 'D', 'h', 'm', 's']
+			newArr.push(time.getFullYear())
+			newArr.push(formatNumber(time.getMonth() + 1))
+			newArr.push(formatNumber(time.getDate()))
+
+			newArr.push(formatNumber(time.getHours()))
+			newArr.push(formatNumber(time.getMinutes()))
+			newArr.push(formatNumber(time.getSeconds()))
+
+			for (var i in newArr) {
+				format = format.replace(formatArr[i], newArr[i])
+			}
+			return format;
+		}
+
+		function changeName(name, id) {
+			$("#name2").css("display","block");
+			$("#name2").val(name);
+			userid = id;
+		}
+	</script>
   
 </body>
 </html>

@@ -115,96 +115,21 @@
 					<div id="comments">
 						<h5>Comments</h5>
 						<ul>
-							<li>
-								<div class="avatar">
-									<a href="#"><img src="img/avatar1.jpg" alt="">
-									</a>
-								</div>
-								<div class="comment_right clearfix">
-									<div class="comment_info">
-										By <a href="#">Anna Smith</a><span>|</span>25/10/2019<span>|</span><a href="#">Reply</a>
-									</div>
-									<p>
-										Nam cursus tellus quis magna porta adipiscing. Donec et eros leo, non pellentesque arcu. Curabitur vitae mi enim, at vestibulum magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet sem a urna rutrumeger fringilla. Nam vel enim ipsum, et congue ante.
-									</p>
-								</div>
-								<ul class="replied-to">
-									<li>
-										<div class="avatar">
-											<a href="#"><img src="img/avatar2.jpg" alt="">
-											</a>
-										</div>
-										<div class="comment_right clearfix">
-											<div class="comment_info">
-												By <a href="#">Anna Smith</a><span>|</span>25/10/2019<span>|</span><a href="#">Reply</a>
-											</div>
-											<p>
-												Nam cursus tellus quis magna porta adipiscing. Donec et eros leo, non pellentesque arcu. Curabitur vitae mi enim, at vestibulum magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet sem a urna rutrumeger fringilla. Nam vel enim ipsum, et congue ante.
-											</p>
-											<p>
-												Aenean iaculis sodales dui, non hendrerit lorem rhoncus ut. Pellentesque ullamcorper venenatis elit idaipiscingi Duis tellus neque, tincidunt eget pulvinar sit amet, rutrum nec urna. Suspendisse pretium laoreet elit vel ultricies. Maecenas ullamcorper ultricies rhoncus. Aliquam erat volutpat.
-											</p>
-										</div>
-										<ul class="replied-to">
-											<li>
-												<div class="avatar">
-													<a href="#"><img src="img/avatar2.jpg" alt="">
-													</a>
-												</div>
-												<div class="comment_right clearfix">
-													<div class="comment_info">
-														By <a href="#">Anna Smith</a><span>|</span>25/10/2019<span>|</span><a href="#">Reply</a>
-													</div>
-													<p>
-														Nam cursus tellus quis magna porta adipiscing. Donec et eros leo, non pellentesque arcu. Curabitur vitae mi enim, at vestibulum magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sit amet sem a urna rutrumeger fringilla. Nam vel enim ipsum, et congue ante.
-													</p>
-													<p>
-														Aenean iaculis sodales dui, non hendrerit lorem rhoncus ut. Pellentesque ullamcorper venenatis elit idaipiscingi Duis tellus neque, tincidunt eget pulvinar sit amet, rutrum nec urna. Suspendisse pretium laoreet elit vel ultricies. Maecenas ullamcorper ultricies rhoncus. Aliquam erat volutpat.
-													</p>
-												</div>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<div class="avatar">
-									<a href="#"><img src="img/avatar3.jpg" alt="">
-									</a>
-								</div>
-
-								<div class="comment_right clearfix">
-									<div class="comment_info">
-										By <a href="#">Anna Smith</a><span>|</span>25/10/2019<span>|</span><a href="#">Reply</a>
-									</div>
-									<p>
-										Cursus tellus quis magna porta adipiscin
-									</p>
-								</div>
-							</li>
 						</ul>
 					</div>
 
 					<hr>
 
-					<h5>Leave a Comment</h5>
-					<form>
+					<h5 id="com">Leave a Comment</h5>
 						<div class="form-group">
-							<input type="text" name="name" id="name2" class="form-control" placeholder="Name">
-						</div>
-						<div class="form-group">
-							<input type="text" name="email" id="email2" class="form-control" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<input type="text" name="email" id="website3" class="form-control" placeholder="Website">
+							<input type="text" name="name" id="name2" class="form-control" placeholder="Name" disabled="disabled" style="display: none" value="0">
 						</div>
 						<div class="form-group">
 							<textarea class="form-control" name="comments" id="comments2" rows="6" placeholder="Message Below"></textarea>
 						</div>
 						<div class="form-group">
-							<button type="submit" id="submit2" class="btn_1 rounded add_bottom_30"> Submit</button>
+							<button type="submit" id="submit2" class="btn_1 rounded add_bottom_30" onclick="submitdiscuss()"> Submit</button>
 						</div>
-					</form>
 				</div>
 				<!-- /col -->
 
@@ -315,13 +240,13 @@
 						<li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
 						<li><a href="mailto:info@Panagea.com"><i class="ti-email"></i> info@Panagea.com</a></li>
 					</ul>
-					<div id="newsletter">
-					<h6>Newsletter</h6>
-					<div id="message-newsletter"></div>
-					<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+					<div id="newsvarter">
+					<h6>Newsvarter</h6>
+					<div id="message-newsvarter"></div>
+					<form method="post" action="assets/newsvarter.php" name="newsvarter_form" id="newsvarter_form">
 						<div class="form-group">
-							<input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-							<input type="submit" value="Submit" id="submit-newsletter">
+							<input type="email" name="email_newsvarter" id="email_newsvarter" class="form-control" placeholder="Your email">
+							<input type="submit" value="Submit" id="submit-newsvarter">
 						</div>
 					</form>
 					</div>
@@ -366,7 +291,7 @@
 	<!--/footer-->
 	</div>
 	<!-- page -->
-	
+
 	<!-- Sign In Popup -->
 	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
@@ -414,16 +339,139 @@
 		<!--form -->
 	</div>
 	<!-- /Sign In Popup -->
-	
+
 	<div id="toTop"></div><!-- Back to top button -->
-	
+
 	<!-- COMMON SCRIPTS -->
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
-	
-	
+	<script>
+		window.user_id;
+		userid = 0;
+		//查询评论
+		var discuss = function(){
+			$.ajax({
+				type: "POST",
+				url: "discuss/getlist",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"limit":"100",
+					"start":"0",
+					"commodityId":"1",
+					"bigType":"1"
+				}),
+				success: function (data) {
+					var str1="";
+					for (var i = 0; i < data.length; i++) {
+						str1 +="<li>\n" +
+								"\t\t\t\t\t\t\t\t<div class=\"avatar\">\n" +
+								"\t\t\t\t\t\t\t\t\t<a href=\"#\"><img src=\""+data[i]['icon']+"\" alt=\"\">\n" +
+								"\t\t\t\t\t\t\t\t\t</a>\n" +
+								"\t\t\t\t\t\t\t\t</div>\n" +
+								"\t\t\t\t\t\t\t\t<div class=\"comment_right clearfix\">\n" +
+								"\t\t\t\t\t\t\t\t\t<div class=\"comment_info\">\n" +
+								"\t\t\t\t\t\t\t\t\t\tBy <a href=\"#\">"+data[i]['nickName']+"</a><span>|</span>"+ formatTime(data[i]['createTime'], 'Y-M-D')+"<span>|</span><a href='#com' onclick='changeName(\""+data[i]['nickName']+"\", "+data[i]['id']+")'>Reply</a>\n" +
+								"\t\t\t\t\t\t\t\t\t</div>\n" +
+								"\t\t\t\t\t\t\t\t\t<p>\n" +
+								"\t\t\t\t\t\t\t\t\t\t"+data[i]['content']+"\n" +
+								"\t\t\t\t\t\t\t\t\t</p>\n" +
+								"\t\t\t\t\t\t\t\t</div>\n" +
+								"\t\t\t\t\t\t\t\t<ul class=\"replied-to\">\n";
+						for (var j = 0; j < data[i]['baseDiscussList'].length; j++) {
+							str1 += "<li>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\"><img src=\""+data[i]['baseDiscussList'][j]['icon']+"\" alt=\"\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t</a>\n" +
+									"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t\t\t\t\t\t<div class=\"comment_right clearfix\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t<div class=\"comment_info\">\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t\tBy <a href=\"#\">"+data[i].baseDiscussList[j]['nickName']+"</a><span>|</span>"+formatTime(data[i].baseDiscussList[j]['createTime'], 'Y-M-D')+"<span></span>\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t<p>\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t\t"+data[i].baseDiscussList[j]['content']+"\n" +
+									"\t\t\t\t\t\t\t\t\t\t\t</p>\n" +
+									"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t\t\t\t\t</li>";
+						}
 
+						str1 += "\t\t\t\t\t\t\t\t</ul>\n" +
+						"\t\t\t\t\t\t\t</li>"
+					}
+					$("#comments ul").html(str1);
+					console.log("scence/navi/list数据获取成功");
+				},error: function (data){
+					console("scence/navi/list数据获取失败")
+				}
+			})
+		}
+		//添加评论
+		var submitdiscuss = function(){
+			if ($("#comments2").val().length < 5){
+				alert("字符过短");
+				return;
+			}
+			console.log($("#comments2").val());
+			console.log(userid);
+			$.ajax({
+				type: "POST",
+				url: "discuss/add",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify({
+					"bigType":"1",
+					"commodityId":"1",
+					"commodityUserId":"1",
+					"content":$("#comments2").val(),
+					"parentId":userid,
+					"mark":""
+				}),
+				success: function (data) {
+					console.log("scence/navi/list数据获取成功");
+					location.reload();
+				},error: function (data){
+					console("discuss/add数据获取失败")
+				}
+			})
+		}
+
+	</script>
+	<script>
+		discuss();
+	</script>
+
+	<script>
+		// 格式化日期，如月、日、时、分、秒保证为2位数
+		function formatNumber (n) {
+			n = n.toString()
+			return n[1] ? n : '0' + n;
+		}
+		// 参数number为毫秒时间戳，format为需要转换成的日期格式
+		function formatTime (number, format) {
+			var time = new Date(number)
+			var newArr = []
+			var formatArr = ['Y', 'M', 'D', 'h', 'm', 's']
+			newArr.push(time.getFullYear())
+			newArr.push(formatNumber(time.getMonth() + 1))
+			newArr.push(formatNumber(time.getDate()))
+
+			newArr.push(formatNumber(time.getHours()))
+			newArr.push(formatNumber(time.getMinutes()))
+			newArr.push(formatNumber(time.getSeconds()))
+
+			for (var i in newArr) {
+				format = format.replace(formatArr[i], newArr[i])
+			}
+			return format;
+		}
+
+		function changeName(name, id) {
+			$("#name2").css("display","block");
+			$("#name2").val(name);
+			userid = id;
+		}
+	</script>
 </body>
 </html>

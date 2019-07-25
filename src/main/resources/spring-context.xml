@@ -12,6 +12,9 @@
 
     <import resource="spring-context-mybatis.xml"/>
 
+    <!--加载email-->
+    <bean id="emailconfig" class="com.ssm.email.EmailConfig"></bean>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:email-config.properties"/>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
