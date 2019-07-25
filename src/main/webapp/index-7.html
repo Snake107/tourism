@@ -43,7 +43,7 @@
 		</div>
 		<ul id="top_menu">
 			<li><a href="cart-3.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-			<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+			<li ><a href="#" id="signIn" class="login" title="Sign In"></a></li>
 			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 		</ul>
 		<!-- /top_menu -->
@@ -70,7 +70,9 @@
 				</li>
 				<li><span><a href="pricing-tables.html">vip</a></span></li>
 				<li><span><a href="about.html">About</a></span></li>
+				<li><span><a href="person.html">个人中心</a></span></li>
 				<li><span><a href="pricing-tables.html">会员充值</a></span></li>
+				<li><span id="user-condition">请登录</span></li>
 			</ul>
 		</nav>
 
@@ -958,42 +960,49 @@
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function () {
-		// 用户登录校验
-		$("#toLogin").click(function () {
-			var email = $("#email").val().trim();
-			var password = $("#password").val().trim();
-			var emailInfo = $("#email_info").html();
-			var passwordInfo = $("#password_info").html();
-			// 校验是否满足登录要求
-			if (email == "" || "邮箱不能为空" == emailInfo){
-				alert("邮箱不能为空");
-				return;
-			} else if (password == "" || "密码不能为空" == passwordInfo) {
-				alert("密码不能为空");
-				return;
+		// 修改导航栏的登录/未登录状态值
+		$.ajax({
+			type: "post",
+			url: "user/getUser",
+			contentType: "application/json; charset=utf-8",
+			datatype: "json",
+			success: function (data) {
+				if (data.nickName != null) {
+					$("#user-condition").text(data.nickName+"，欢迎您")
+				}else {
+					$("#user-condition").text("请登录")
+				}
 			}
-			// 通过校验,可进行用户登录的校验
+		});
+		// 判断用户是否已经登录，如果已经登录，则弹出是否注销，若无登录，则跳转到登录页面
+		$("#signIn").click(function () {
 			$.ajax({
 				type: "post",
-				url: "user/loginUser",
+				url: "user/checkUserSession",
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
-				data: JSON.stringify({
-					"email": $("#email").val(),
-					"password": $("#password").val()
-				}),
 				success:function (data) {
 					if (data) {
-						// 登录成功
-						alert("登录成功!");
-						location.href = "index-7.html";
+						// 用户已登录,则弹出是否要注销
+						var flag = confirm("请问你确定要注销吗?");
+						if (flag){
+							// ajax 进行注销
+							$.ajax({
+								type: "post",
+								url: "user/logoutUser",
+								contentType: "application/json; charset=utf-8",
+								datatype: "json",
+								success:function (data) {
+									if (!data) {
+										alert("注销失败，请联系管理员")
+									}
+									location.href = "index-7.html";
+								}
+							})
+						}
 					}else {
-						// 登录失败
-						alert("登录失败，请检查您的输入是否正确")
+						location.href = "login.html";
 					}
-				},
-				error: function (data) {
-					alert("登录失败，请联系管理员");
 				}
 			})
 		})
