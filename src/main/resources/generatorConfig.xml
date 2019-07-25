@@ -8,7 +8,7 @@
     <properties resource="jdbc.properties"></properties>
     <!-- 数据库驱动，注意，这里必须要修改成你的数据库的驱动地址-->
     <classPathEntry
-            location="D:\Jar\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+            location="G:\java\maven\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
@@ -98,6 +98,10 @@
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
 
         <table tableName="t_admin" domainObjectName="Admin" enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+        <table tableName="t_contact" domainObjectName="Contact" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
 
