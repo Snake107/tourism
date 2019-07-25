@@ -202,7 +202,7 @@ public class UserController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
     @ResponseBody
     public boolean uploadUser(@RequestBody User user,HttpServletRequest request){
         User user1 = (User) request.getSession().getAttribute("user");
@@ -221,11 +221,11 @@ public class UserController {
      * 原密码的校验
      * @param user
      * @param request
-     * @return          true 密码正确 , false 密码错误
+     * @return          1 密码正确 , 0 密码错误
      */
-    @RequestMapping(value = "/checkPassword",method = RequestMethod.POST)
+    @RequestMapping(value = "checkPassword",method = RequestMethod.POST)
     @ResponseBody
-    public boolean checkPassword(@RequestBody User user,HttpServletRequest request){
+    public Integer checkPassword(@RequestBody User user,HttpServletRequest request){
         User user1 = (User) request.getSession().getAttribute("user");
         user.setId(user1.getId());
         // MD5 加密
@@ -233,7 +233,32 @@ public class UserController {
         byte[] bytes = password.getBytes();
         String passwordMD5 = DigestUtils.md5DigestAsHex(bytes);
         user.setPassword(passwordMD5);
-        return userService.checkPassword(user);
+        boolean flag = userService.checkPassword(user);
+        Integer a;
+        if (flag){
+            a = 1;
+            return a;
+        }
+        a = 0;
+        return a;
+    }
+
+    /**
+     * 修改密码
+     * @param user
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "updatePassword",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean updatePassword(@RequestBody User user,HttpServletRequest request){
+        User user1 = (User) request.getSession().getAttribute("user");
+        String password = user.getPassword();
+        byte[] bytes = password.getBytes();
+        String passwordMD5 = DigestUtils.md5DigestAsHex(bytes);
+        user.setPassword(passwordMD5);
+        user.setId(user1.getId());
+        return userService.updatePassword(user);
     }
 }
 

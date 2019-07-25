@@ -83,4 +83,11 @@ public interface UserMapperExt extends Mapper<User> {
      * @return
      */
     List<User> checkPassword(User user);
+
+    /**
+     * 修改密码
+     * @param user
+     * @return
+     */
+    int changePassword(User user);
 }

@@ -202,4 +202,18 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    /**
+     * 修改密码
+     * @param user
+     * @return
+     */
+    @Override
+    public boolean updatePassword(User user) {
+        int rSet = userMapperExt.changePassword(user);
+        if (rSet > 0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -70,7 +70,7 @@
 				</li>
 				<li><span><a href="pricing-tables.html">vip</a></span></li>
 				<li><span><a href="about.html">About</a></span></li>
-				<li><span><a href="person.html">个人中心</a></span></li>
+				<li><span><a href="person.html" id="userCenter">个人中心</a></span></li>
 				<li><span><a href="pricing-tables.html">会员充值</a></span></li>
 				<li><span id="user-condition">请登录</span></li>
 			</ul>
@@ -954,13 +954,13 @@
 			});
 		});
 	</script>
-	 <script defer src="js/weather_home.js"></script>
+	<script defer src="js/weather_home.js"></script>
 
 <!-- FatCao 编写的登录的判断 -->
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function () {
 		// 修改导航栏的登录/未登录状态值
+		// 个人中心 , 若无登录则隐藏 , 若登录了则显示
 		$.ajax({
 			type: "post",
 			url: "user/getUser",
@@ -968,9 +968,11 @@
 			datatype: "json",
 			success: function (data) {
 				if (data.nickName != null) {
-					$("#user-condition").text(data.nickName+"，欢迎您")
+					$("#user-condition").text(data.nickName+"，欢迎您");
+					$("#userCenter").css("display","block")
 				}else {
 					$("#user-condition").text("请登录")
+					$("#userCenter").css("display","none")
 				}
 			}
 		});

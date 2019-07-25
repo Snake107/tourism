@@ -32,6 +32,8 @@ public interface UserService {
     Integer updateUser(User user);
     // 根据 id 获取用户信息
     User getUserById(int id);
-    // 修改密码 , 原密码的校验
+    // 原密码的校验
     boolean checkPassword(User user);
+    // 修改密码
+    boolean updatePassword(User user);
 }
