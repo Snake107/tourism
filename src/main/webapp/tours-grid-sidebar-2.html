@@ -52,20 +52,20 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="index-7.html">Home</a></span>
+				<li><span><a href="index-7.html">主页</a></span>
 				</li>
-				<li><span><a href="tours-grid-sidebar-2.html">Tours</a></span>
+				<li><span><a href="tours-grid-sidebar-2.html">旅游</a></span>
 				</li>
-				<li><span><a href="hotels-grid-sidebar-2.html">Hotels</a></span>
+				<li><span><a href="hotels-grid-sidebar-2.html">酒店</a></span>
 				</li>
-				<li><span><a href="restaurants-grid-isotope.html">Eat &amp; Drink</a></span>
+				<li><span><a href="restaurants-grid-isotope.html">餐厅</a></span>
 				</li>
-				<li><span><a href="blog.html">blog</a></span>
+				<li><span><a href="blog.html">博客</a></span>
 				</li>
-				<li><span><a href="contacts.html">contacts</a></span>
+				<li><span><a href="contacts.html">反馈</a></span>
 				</li>
-				<li><span><a href="pricing-tables.html">vip</a></span></li>
-				<li><span><a href="about.html">About</a></span></li>
+				<li><span><a href="pricing-tables.html">会员</a></span></li>
+				<li><span><a href="about.html">关于我们</a></span></li>
 			</ul>
 		</nav>
 
@@ -102,9 +102,7 @@
 							<a href="tours-list-sidebar-2.html"><i class="icon-th-list"></i></a>
 						</div>
 					</li>
-					<li>
-						<a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
-					</li>
+
 				</ul>
 			</div>
 			<!-- /container -->
@@ -181,8 +179,8 @@
 				<!-- /aside -->
 
 				<div class="col-lg-9">
-					<div class="isotope-wrapper"id="div_list">
-						<!--<div class="row" id="div_list">-->
+					<div class="isotope-wrapper"id="div_list1">
+						<div class="row" id="div_list">
 							<!--<div class="col-md-6 isotope-item popular" id="div_list">-->
 								<!--<div class="box_grid">-->
 									<!--<figure>-->
@@ -303,6 +301,7 @@
 				<!-- /isotope-wrapper -->
 
 				<!--<p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p>-->
+						</div>
 				</div>
 				<!-- /col -->
 			</div>
@@ -339,7 +338,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /bg_color_1 -->
-
+		</div>
 	</main>
 	<!--/main-->
 
@@ -608,28 +607,30 @@
         // })
 
 		function TraverseList(returnData) {
-		    var data = "";
             $.each(returnData, function (index, item) {
-                data += "<div class=\"col-md-6 isotope-item popular\">\n" +
-                    "\t\t\t\t\t\t\t\t<div class=\"box_grid\">\n" +
-                    "\t\t\t\t\t\t\t\t\t<figure>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<a href=\"#0\" class=\"wish_bt\"></a>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<a href=\"tour-detail.html?id="+item.id+"&type="+item.pType+"\"><img src=\"img/tour_1.jpg\" class=\"img-fluid\" alt=\"\" width=\"800\" height=\"533\"><div class=\"read_more\"><span>查看详情</span></div></a>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<small>"+item.tagName+"</small>\n" +
-                    "\t\t\t\t\t\t\t\t\t</figure>\n" +
-                    "\t\t\t\t\t\t\t\t\t<div class=\"wrapper\">\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<h3><a href=\"tour-detail.html\">"+item.scenceName+"</a></h3>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<p>"+item.description+"</p>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<span class=\"price\">套餐 <strong>$"+item.price+"</strong> /人民币</span>\n" +
-                    "\t\t\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t\t\t<ul>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<li><i class=\"ti-eye\"></i> "+item.views+" 浏览过</li>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<li><div class=\"score\"><span>Superb<em>"+item.views+" 评论</em></span><strong>8.9</strong></div></li>\n" +
-                    "\t\t\t\t\t\t\t\t\t</ul>\n" +
-                    "\t\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t</div>";
+				$("#div_list").append(
+						"<div class=\"col-md-6 isotope-item popular\">\n" +
+						"\t\t\t\t\t\t\t\t<div class=\"box_grid\">\n" +
+						"\t\t\t\t\t\t\t\t\t<figure>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<a href=\"#0\" class=\"wish_bt\"></a>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<a href=\"tour-detail.html?id="+item.id+"&type="+item.pType+"\"><img src=\"img/tour_1.jpg\" class=\"img-fluid\" alt=\"\" width=\"800\" height=\"533\"><div class=\"read_more\"><span>查看详情</span></div></a>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<small>"+item.tagName+"</small>\n" +
+						"\t\t\t\t\t\t\t\t\t</figure>\n" +
+						"\t\t\t\t\t\t\t\t\t<div class=\"wrapper\">\n" +
+						"\t\t\t\t\t\t\t\t\t\t<h3><a href=\"tour-detail.html\">"+item.scenceName+"</a></h3>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<p>"+item.description+"</p>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<span class=\"price\">套餐 <strong>$"+item.price+"</strong> /人民币</span>\n" +
+						"\t\t\t\t\t\t\t\t\t</div>\n" +
+						"\t\t\t\t\t\t\t\t\t<ul>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<li><i class=\"ti-eye\"></i> "+item.views+" 浏览过</li>\n" +
+						"\t\t\t\t\t\t\t\t\t\t<li><div class=\"score\"><span>Superb<em>"+item.views+" 评论</em></span><strong>8.9</strong></div></li>\n" +
+						"\t\t\t\t\t\t\t\t\t</ul>\n" +
+						"\t\t\t\t\t\t\t\t</div>\n" +
+						"\t\t\t\t\t\t\t</div>"
+				)
+
             });
-            $("#div_list").append(data)
+
         }
 
 		

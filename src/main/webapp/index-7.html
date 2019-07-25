@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>name is null</title>
+    <title>首页</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -56,22 +56,21 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="index-7.html">Home</a></span>
+				<li><span><a href="index-7.html">主页</a></span>
 				</li>
-				<li><span><a href="tours-list-sidebar-2.html">Tours</a></span>
+				<li><span><a href="tours-list-sidebar-2.html">旅游</a></span>
 				</li>
-				<li><span><a href="hotels-grid-sidebar-2.html">Hotels</a></span>
+				<li><span><a href="hotels-grid-sidebar-2.html">酒店</a></span>
 				</li>
-				<li><span><a href="restaurants-grid-isotope.html">Eat &amp; Drink</a></span>
+				<li><span><a href="restaurants-grid-isotope.html">餐厅</a></span>
 				</li>
-				<li><span><a href="blog.html">blog</a></span>
+				<li><span><a href="blog.html">博客</a></span>
 				</li>
-				<li><span><a href="contacts.html">contacts</a></span>
+				<li><span><a href="contacts.html">反馈</a></span>
 				</li>
-				<li><span><a href="pricing-tables.html">vip</a></span></li>
-				<li><span><a href="about.html">About</a></span></li>
-				<li><span><a href="person.html" id="userCenter">个人中心</a></span></li>
-				<li><span><a href="pricing-tables.html">会员充值</a></span></li>
+				<li><span><a href="pricing-tables.html">会员</a></span></li>
+				<li><span><a href="about.html">关于我们</a></span></li>
+				<li><span><a href="person.html">个人中心</a></span></li>
 				<li><span id="user-condition">请登录</span></li>
 			</ul>
 		</nav>
@@ -203,7 +202,7 @@
 							</select>
 						</div>
 						<div class="col-lg-2">
-							<input type="submit" id="sub" class="btn_search" value="Search">
+							<input type="submit" id="sub" class="btn_search" value="搜索">
 						</div>
 					</div>
 					<!-- /row -->
@@ -847,6 +846,7 @@
 				url: "scence/navi/list",
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
+				async:false,
 				data: JSON.stringify({
 					"orderBy":"hotelNum desc",
 					"limit":"5"
@@ -954,7 +954,6 @@
 			});
 		});
 	</script>
-	<script defer src="js/weather_home.js"></script>
 
 <!-- FatCao 编写的登录的判断 -->
 <script type="text/javascript">
@@ -1034,7 +1033,6 @@
 
         })
 	</script>
-	 <script defer src="js/weather_home.js"></script>
 
 </body>
 </html>
