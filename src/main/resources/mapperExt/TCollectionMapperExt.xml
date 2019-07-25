@@ -44,7 +44,7 @@ LEFT JOIN t_user tu on c.user_id=tu.id where tu.id = #{id}
   </insert>
 
   <delete id="delCollection" parameterType="com.ssm.dto.wish.CollectionDto">
-   DELETE from  t_collection  where id = #{id};
+   DELETE from  t_collection  where commodity_id = #{id} ;
   </delete>
   
 

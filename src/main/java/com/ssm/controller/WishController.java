@@ -41,8 +41,12 @@ public class WishController {
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public Object getCollectionById(@RequestBody User user){
-        CollectionDto collection = collectionService.getCollectionById(user.getId());
+    public Object getCollectionById(@RequestBody User user, HttpServletRequest request){
+        User user1 = (User) (request.getSession().getAttribute("user"));
+        if (user1 == null){
+            return null;
+        }
+        CollectionDto collection = collectionService.getCollectionById(user1.getId());
         collection.getCollectionDtos().forEach(wish ->{
             //System.out.println(wish.getDescription());
         });
