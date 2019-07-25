@@ -2056,13 +2056,13 @@ video {
 			}
 		}
 	}
-	select {
-		display: none;
-	}
-	.nice-select .current {
-		font-weight: 500;
-		color: #6f787f;
-	}
+	//select {
+	//	display: none;
+	//}
+	//.nice-select .current {
+	//	font-weight: 500;
+	//	color: #6f787f;
+	//}
 	.form-group {
 		margin: 0;
 		@include tablet {

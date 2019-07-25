@@ -53,9 +53,9 @@
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="index-7.html">Home</a></span>
+				<li><span><a href="index-7.html">主页</a></span>
 				</li>
-				<li><span><a href="tours-grid-sidebar-2.html">Tours</a></span>
+				<li><span><a href="tours-list-sidebar-2.html">旅游</a></span>
 				</li>
 				<li><span><a href="hotels-grid-sidebar-2.html">Hotels</a></span>
 				</li>
@@ -85,7 +85,7 @@
 		<!--/hero_in-->
 		
 		<div class="filters_listing sticky_horizontal">
-			<div class="container">
+			<div class="container" style="display: none">
 				<ul class="clearfix">
 					<li>
 						<div class="switch-field">
@@ -122,23 +122,23 @@
 				<aside class="col-lg-3">
 					<div class="custom-search-input-2 inner-2">
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Terms...">
+							<input class="form-control" type="text" placeholder="关键字" id="keyword">
 							<i class="icon_search"></i>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Where">
+							<input class="form-control" type="text" placeholder="地区" id="region">
 							<i class="icon_pin_alt"></i>
 						</div>
 						<div class="form-group">
-						<select class="wide">
-							<option>All Categories</option>	
-							<option>Museums</option>
-							<option>Churches</option>
-							<option>Historic</option>
-							<option>Walking</option>
+						<select class="wide" id="label">
+							<!--<option>所有分類</option>-->
+							<!--<option>Museums</option>-->
+							<!--<option>Churches</option>-->
+							<!--<option>Historic</option>-->
+							<!--<option>Walking</option>-->
 						</select>
 						</div>
-						<input type="submit" class="btn_search" value="Search">
+						<input type="submit" class="btn_search" id="Search" value="Search">
 					</div>
 					<!-- /custom-search-input-2 -->
 					<div id="filters_col">
@@ -153,23 +153,23 @@
 								 <ul>
                                     <li>
                                         <label>Superb: 9+</label>
-                                        <input type="checkbox" class="js-switch" checked>
+                                        <input type="checkbox" class="js-switch" name='chick' value="9">
                                     </li>
                                     <li>
                                         <label>Very good: 8+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <input type="checkbox" class="js-switch" name='chick' value="8">
                                     </li>
                                     <li>
                                         <label>Good: 7+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <input type="checkbox" class="js-switch" name='chick' value="7">
                                     </li>
                                     <li>
                                         <label>Pleasant: 6+</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <input type="checkbox" class="js-switch" name='chick' value="6">
                                     </li>
                                     <li>
                                         <label>No rating</label>
-                                        <input type="checkbox" class="js-switch">
+                                        <input type="checkbox" class="js-switch" name='chick' value="5">
                                     </li>
                                 </ul>
 							</div>
@@ -181,127 +181,127 @@
 				<!-- /aside -->
 
 				<div class="col-lg-9" id="list_sidebar">
-					<div class="isotope-wrapper">
-					<div class="box_list isotope-item popular">
-						<div class="row no-gutters">
-							<div class="col-lg-5">
-								<figure>
-									<small>Historic</small>
-									<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-								</figure>
-							</div>
-							<div class="col-lg-7">
-								<div class="wrapper">
-									<a href="#0" class="wish_bt"></a>
-									<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
-									<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-									<span class="price">From <strong>$54</strong> /per person</span>
-								</div>
-								<ul>
-									<li><i class="ti-eye"></i> 164 views</li>
-									<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /box_list -->
-					<div class="box_list isotope-item latest">
-						<div class="row no-gutters">
-							<div class="col-lg-5">
-								<figure>
-									<small>Churches</small>
-									<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-								</figure>
-							</div>
-							<div class="col-lg-7">
-								<div class="wrapper">
-									<a href="#0" class="wish_bt"></a>
-									<h3><a href="tour-detail.html">Notredam</a></h3>
-									<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-									<span class="price">From <strong>$124</strong> /per person</span>
-								</div>
-								<ul>
-									<li><i class="ti-eye"></i> 164 views</li>
-									<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /box_list -->
-					<div class="box_list isotope-item popular">
-						<div class="row no-gutters">
-							<div class="col-lg-5">
-								<figure>
-									<small>Museum</small>
-									<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-								</figure>
-							</div>
-							<div class="col-lg-7">
-								<div class="wrapper">
-									<a href="#0" class="wish_bt"></a>
-									<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
-									<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-									<span class="price">From <strong>$45</strong> /per person</span>
-								</div>
-								<ul>
-									<li><i class="ti-eye"></i> 164 views</li>
-									<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /box_list -->
-					<div class="box_list isotope-item popular">
-						<div class="row no-gutters">
-							<div class="col-lg-5">
-								<figure>
-									<small>Historic</small>
-									<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-								</figure>
-							</div>
-							<div class="col-lg-7">
-								<div class="wrapper">
-									<a href="#0" class="wish_bt"></a>
-									<h3><a href="tour-detail.html">Versailles</a></h3>
-									<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-									<span class="price">From <strong>$25</strong> /per person</span>
-								</div>
-								<ul>
-									<li><i class="ti-eye"></i> 164 views</li>
-									<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /box_list -->
-					<div class="box_list isotope-item latest">
-						<div class="row no-gutters">
-							<div class="col-lg-5">
-								<figure>
-									<small>Walking</small>
-									<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-								</figure>
-							</div>
-							<div class="col-lg-7">
-								<div class="wrapper">
-									<a href="#0" class="wish_bt"></a>
-									<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
-									<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-									<span class="price">From <strong>$65</strong> /per person</span>
-								</div>
-								<ul>
-									<li><i class="ti-eye"></i> 164 views</li>
-									<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /box_list -->
-					</div>
-					<!-- /isotope-wrapper -->
+					<!--<div class="isotope-wrapper">-->
+					<!--<div class="box_list isotope-item popular">-->
+						<!--<div class="row no-gutters">-->
+							<!--<div class="col-lg-5">-->
+								<!--<figure>-->
+									<!--<small>Historic</small>-->
+									<!--<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>-->
+								<!--</figure>-->
+							<!--</div>-->
+							<!--<div class="col-lg-7">-->
+								<!--<div class="wrapper">-->
+									<!--<a href="#0" class="wish_bt"></a>-->
+									<!--<h3><a href="tour-detail.html">Arc Triomphe</a></h3>-->
+									<!--<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>-->
+									<!--<span class="price">From <strong>$54</strong> /per person</span>-->
+								<!--</div>-->
+								<!--<ul>-->
+									<!--<li><i class="ti-eye"></i> 164 views</li>-->
+									<!--<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /box_list &ndash;&gt;-->
+					<!--<div class="box_list isotope-item latest">-->
+						<!--<div class="row no-gutters">-->
+							<!--<div class="col-lg-5">-->
+								<!--<figure>-->
+									<!--<small>Churches</small>-->
+									<!--<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>-->
+								<!--</figure>-->
+							<!--</div>-->
+							<!--<div class="col-lg-7">-->
+								<!--<div class="wrapper">-->
+									<!--<a href="#0" class="wish_bt"></a>-->
+									<!--<h3><a href="tour-detail.html">Notredam</a></h3>-->
+									<!--<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>-->
+									<!--<span class="price">From <strong>$124</strong> /per person</span>-->
+								<!--</div>-->
+								<!--<ul>-->
+									<!--<li><i class="ti-eye"></i> 164 views</li>-->
+									<!--<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /box_list &ndash;&gt;-->
+					<!--<div class="box_list isotope-item popular">-->
+						<!--<div class="row no-gutters">-->
+							<!--<div class="col-lg-5">-->
+								<!--<figure>-->
+									<!--<small>Museum</small>-->
+									<!--<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>-->
+								<!--</figure>-->
+							<!--</div>-->
+							<!--<div class="col-lg-7">-->
+								<!--<div class="wrapper">-->
+									<!--<a href="#0" class="wish_bt"></a>-->
+									<!--<h3><a href="tour-detail.html">Pompidue Museum</a></h3>-->
+									<!--<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>-->
+									<!--<span class="price">From <strong>$45</strong> /per person</span>-->
+								<!--</div>-->
+								<!--<ul>-->
+									<!--<li><i class="ti-eye"></i> 164 views</li>-->
+									<!--<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /box_list &ndash;&gt;-->
+					<!--<div class="box_list isotope-item popular">-->
+						<!--<div class="row no-gutters">-->
+							<!--<div class="col-lg-5">-->
+								<!--<figure>-->
+									<!--<small>Historic</small>-->
+									<!--<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>-->
+								<!--</figure>-->
+							<!--</div>-->
+							<!--<div class="col-lg-7">-->
+								<!--<div class="wrapper">-->
+									<!--<a href="#0" class="wish_bt"></a>-->
+									<!--<h3><a href="tour-detail.html">Versailles</a></h3>-->
+									<!--<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>-->
+									<!--<span class="price">From <strong>$25</strong> /per person</span>-->
+								<!--</div>-->
+								<!--<ul>-->
+									<!--<li><i class="ti-eye"></i> 164 views</li>-->
+									<!--<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /box_list &ndash;&gt;-->
+					<!--<div class="box_list isotope-item latest">-->
+						<!--<div class="row no-gutters">-->
+							<!--<div class="col-lg-5">-->
+								<!--<figure>-->
+									<!--<small>Walking</small>-->
+									<!--<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>-->
+								<!--</figure>-->
+							<!--</div>-->
+							<!--<div class="col-lg-7">-->
+								<!--<div class="wrapper">-->
+									<!--<a href="#0" class="wish_bt"></a>-->
+									<!--<h3><a href="tour-detail.html">Tour Eiffel</a></h3>-->
+									<!--<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>-->
+									<!--<span class="price">From <strong>$65</strong> /per person</span>-->
+								<!--</div>-->
+								<!--<ul>-->
+									<!--<li><i class="ti-eye"></i> 164 views</li>-->
+									<!--<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /box_list &ndash;&gt;-->
+					<!--</div>-->
+					<!--&lt;!&ndash; /isotope-wrapper &ndash;&gt;-->
 
-					<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p>
-				</div>
+					<!--<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p>-->
+				<!--</div>-->
 				<!-- /col -->
 			</div>
 			<!-- /row -->
@@ -476,7 +476,36 @@
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--<script src="js/jquery-2.2.4.min.js"></script>-->
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		var src ="";
+        $.ajax({
+            //提交数据的类型 POST GET
+            type:"GET",
+            //提交的网址
+            url:"scence/getLabel",
+            //返回数据的格式
+            dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+            async:true,
+            //成功返回之后调用的函数
+            success: function (returnData) {
+                console.log(returnData);
+                $.each(returnData,function (index, item) {
+                    if (index == 0){
+                        src += "<option value='0'>所有分类</option>";
+					}
+					src += "<option value=\'"+item.id+"\'>"+item.tagName+"</option>";
+                })
+                $("#label").html(src)
+            },
+            //调用出错执行的函数
+            error: function(responseText){
+                //请求出错处理
+                console.error(responseText);
+            }
+        });
+	</script>
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
@@ -503,18 +532,140 @@
 	
 	<!-- Range Slider -->
 	<script>
-		 $("#range").ionRangeSlider({
+
+        //滑动条
+        $("#range").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
-            min: 30,
-            max: 180,
+            min: 0,
+            max: 9999,
             from: 60,
-            to: 130,
+            to: 9999,
             type: 'double',
             step: 1,
-            prefix: "Min. ",
+            prefix: "金额. ",
             grid: false
         });
+
+
+         //刚进来获取景点信息
+         $.ajax({
+             //提交数据的类型 POST GET
+             type:"GET",
+             //提交的网址
+             url:"scence/getAttractions",
+             //返回数据的格式
+             dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+             async:true,
+             //成功返回之后调用的函数
+             success: function (returnData) {
+                 console.log(returnData);
+                 TraverseList(returnData)
+                 //获得要赋值的select的id，进行赋值
+                 // $("#label").append("<option value='0'>所有分类</option> "+str);
+             },
+             //调用出错执行的函数
+             error: function(responseText){
+                 //请求出错处理
+                 console.error(responseText);
+             }
+         });
+
+
+
+         //当前页面点击搜索
+         $("#Search").click(function () {
+
+             //获取下拉框的值
+			 var classification = $("#label").val();
+			 if (classification == 0){
+			     classification = "";
+			 }
+             //获取筛选中的评论分数
+             var mark = "";
+             $("input[name='chick']:checkbox").each(function () {
+                 if ($(this).is(':checked')) {
+                     mark = $(this).val();
+                 }
+             });
+             console.log(mark + "mark");
+
+             //获取滑动条的值
+             var split = $("#range").val().split(";");
+             var max = split[0];
+             var min = split[1];
+			 console.log(max + "max");
+			 console.log(min + "min");
+             var keyword = $("#keyword").val();
+             var region = $("#region").val();
+             console.log(keyword + "keyword");
+             console.log(region + "region");
+
+             $.ajax({
+                 //提交数据的类型 POST GET
+                 type:"POST",
+                 //提交的网址
+                 url:"scence/TravelSearch",
+                 //返回数据的格式
+                 dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                 contentType:"application/json",
+                 async:false,
+                 //成功返回之后调用的函数
+                 data:JSON.stringify({
+                     "keyword":keyword,
+                     "region":region,
+                     "max":max,
+                     "min":min,
+                     "mark":mark,
+                     "classification":classification
+                 }),
+                 success: function (returnData) {
+                     TraverseList(returnData)
+                 },
+                 //调用出错执行的函数
+                 error: function(responseText){
+                     //请求出错处理
+                     console.error(responseText);
+                 }
+             });
+         })
+	</script>
+
+	<script>
+        //遍历列表并赋值
+        function TraverseList(returnData) {
+            console.log(returnData)
+            var data_list = "";
+            $("#list_sidebar").empty();
+            $.each(returnData, function (index, itme) {
+                data_list += "<div class=\"box_list isotope-item popular\">\n" +
+                    "\t\t\t\t\t\t<div class=\"row no-gutters\">\n" +
+                    "\t\t\t\t\t\t\t<div class=\"col-lg-5\">\n" +
+                    "\t\t\t\t\t\t\t\t<figure>\n" +
+                    "\t\t\t\t\t\t\t\t\t<small>" + itme.tagName + "</small>\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"tour-detail.html?id="+itme.id+"&type="+itme.pType+"\"><img src=\"img/tour_1.jpg\" class=\"img-fluid\" alt=\"\" width=\"800\" height=\"533\"><div class=\"read_more\"><span>查看详情</span></div></a>\n" +
+                    "\t\t\t\t\t\t\t\t</figure>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class=\"col-lg-7\">\n" +
+                    "\t\t\t\t\t\t\t\t<div class=\"wrapper\">\n" +
+                    "\t\t\t\t\t\t\t\t\t<a href=\"#0\" class=\"wish_bt\"></a>\n" +
+                    "\t\t\t\t\t\t\t\t\t<h3><a href=\"tour-detail.html?id="+itme.id+"&type="+itme.pType+"\">" + itme.scenceName + "</a></h3>\n" +
+                    "\t\t\t\t\t\t\t\t\t<p>" + itme.description + "</p>\n" +
+                    "\t\t\t\t\t\t\t\t\t<span class=\"price\">套餐: <strong>" + itme.price + "</strong> /人民币</span>\n" +
+                    "\t\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t\t<ul>\n" +
+                    "\t\t\t\t\t\t\t\t\t<li><i class=\"ti-eye\"></i> " + itme.views + " 浏览</li>\n" +
+                    "\t\t\t\t\t\t\t\t\t<li><div class=\"score\"><span>一共有<em>" + itme.totalNumber + " 评论</em></span><strong>" + itme.mark + "</strong></div></li>\n" +
+                    "\t\t\t\t\t\t\t\t</ul>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t</div>";
+            });
+            $("#list_sidebar").append(data_list);
+            // $("#list_sidebar").append("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>")
+
+            $("<p class=\"text-center add_top_30\"><a href=\"#0\" class=\"btn_1 rounded\">加载更多</a></p>").appendTo($("#list_sidebar"));
+        }
 	</script>
 	
 	

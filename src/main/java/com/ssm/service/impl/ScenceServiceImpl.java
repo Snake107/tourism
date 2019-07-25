@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import com.ssm.dto.scence.ScenceDto;
+import com.ssm.pojo.Tags;
+
+
+import com.ssm.vo.SearchVo;
+
 
 @Service
 public class ScenceServiceImpl implements ScenceService {
@@ -24,5 +30,23 @@ public class ScenceServiceImpl implements ScenceService {
     @Override
     public List<ScenceNavi> getScenceNavi(ScenceNaviParameter scenceNaviParameter) {
         return scenceMapperExt.getScenceNavi(scenceNaviParameter);
+    }
+
+
+
+
+    @Override
+    public List<ScenceDto> getAttractions() {
+        return scenceMapperExt.getAttractions();
+    }
+
+    @Override
+    public List<ScenceDto> TravelSearch(SearchVo searchVo) {
+        return scenceMapperExt.TravelSearch(searchVo);
+    }
+
+    @Override
+    public List<Tags> getLabel() {
+        return scenceMapperExt.getLabel();
     }
 }

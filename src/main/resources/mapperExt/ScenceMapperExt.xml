@@ -51,4 +51,104 @@
 		LIMIT 0,6;
 	</select>
 
+    <!--<select id="getAttractionsLabel"  resultType="com.ssm.dto.scence.ScenceDto">-->
+        <!--select t_ta.tag_name as name,t_ta.id from t_scence t_sc INNER JOIN t_tags t_ta where t_sc.tags_id = t_ta.id-->
+    <!--</select>-->
+
+
+    <select id="getAttractions" resultType="com.ssm.dto.scence.ScenceDto">
+
+select aaa.* from (select information.*, t_ci.country, t_ci.province, t_ci.city from
+        (SELECT t_ta.id as tid, t_ta.tag_name, t_sc.id, t_sc.scence_name, t_sc.picture, t_sc.description, t_sc.price, t_sc.p_type, t_sc.views, t_sc.mark,
+        count(t_comm.id) AS total_number FROM t_scence t_sc INNER JOIN t_tags t_ta LEFT JOIN t_comment AS
+        t_comm ON t_comm.commodity_id = t_sc.id WHERE t_sc.tags_id = t_ta.id GROUP BY t_sc.id, t_sc.p_type)
+        as information INNER JOIN t_city t_ci where t_ci.id = information.id) as aaa
+
+
+    </select>
+
+
+    <select id="TravelSearch" resultType="com.ssm.dto.scence.ScenceDto" parameterType="com.ssm.vo.SearchVo">
+        select aaa.* from (select information.*, t_ci.country, t_ci.province, t_ci.city from
+        (SELECT t_ta.id as tid, t_ta.tag_name, t_sc.id, t_sc.scence_name, t_sc.picture, t_sc.description, t_sc.price, t_sc.p_type, t_sc.views, t_sc.mark,
+        count(t_comm.id) AS total_number FROM t_scence t_sc INNER JOIN t_tags t_ta LEFT JOIN t_comment AS
+        t_comm ON t_comm.commodity_id = t_sc.id WHERE t_sc.tags_id = t_ta.id GROUP BY t_sc.id, t_sc.p_type)
+        as information INNER JOIN t_city t_ci where t_ci.id = information.id) as aaa
+
+
+    <where>
+        <choose>
+            <when test="keyword != '' and region != '' and classification != null" >
+
+                CONCAT(
+                aaa.scence_name
+                ) LIKE "%" #{keyword}"%"
+
+                and CONCAT(
+                aaa.country,
+                aaa.province,
+                aaa.city
+                ) LIKE "%" #{region}"%"
+
+
+                and aaa.tid = #{classification}
+
+            </when>
+            <when test="keyword != '' and region != ''">
+                CONCAT(
+                aaa.scence_name
+                ) LIKE "%" #{keyword}"%"
+
+                and CONCAT(
+                aaa.country,
+                aaa.province,
+                aaa.city
+                ) LIKE "%" #{region}"%"
+
+            </when>
+            <when test="keyword != '' and classification != null">
+                CONCAT(
+                aaa.scence_name
+                ) LIKE "%" #{keyword}"%"  and aaa.tid = #{classification}
+            </when>
+
+            <when test="region != '' and classification != null">
+                CONCAT(
+                aaa.country,
+                aaa.province,
+                aaa.city
+                ) LIKE "%" #{region}"%"
+                 and aaa.tid = #{classification}
+            </when>
+            <when test="keyword != ''">
+                CONCAT(
+                aaa.scence_name
+                ) LIKE "%" #{keyword}"%"
+            </when>
+            <when test="region != ''">
+                CONCAT(
+                aaa.country,
+                aaa.province,
+                aaa.city
+                ) LIKE "%" #{region}"%"
+            </when>
+            <when test="classification != null">
+                aaa.tid = #{classification}
+            </when>
+        </choose>
+        <if test="max != null">
+            and aaa.price &gt;= #{max} and aaa.price &lt;= #{min}
+        </if>
+        <if test="mark != null and mark != 5">
+            and aaa.mark &gt;= #{mark}
+        </if>
+        <if test="mark == 5">
+            and aaa.mark &lt;= #{mark}
+        </if>
+    </where>
+    </select>
+
+    <select id="getLabel" resultType="com.ssm.pojo.Tags">
+SELECT ta.* from t_tags ta INNER JOIN t_scence  sc WHERE sc.tags_id = ta.id GROUP BY ta.tag_name
+    </select>
 </mapper>

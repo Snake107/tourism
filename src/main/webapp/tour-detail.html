@@ -93,9 +93,9 @@
 			<nav class="secondary_nav sticky_horizontal">
 				<div class="container">
 					<ul class="clearfix">
-						<li><a href="#description" class="active">Description</a></li>
-						<li><a href="#reviews">Reviews</a></li>
-						<li><a href="#sidebar">Booking</a></li>
+						<li><a href="#description" class="active">景点描述</a></li>
+						<li><a href="#reviews">评论</a></li>
+						<li><a href="#sidebar">预订</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -538,6 +538,26 @@
 				'margin': 1
 			});
 		});
+
+		getRequest()
+        //获取url的值
+        function getRequest() {
+            var url = window.location.search; //获取url中"?"符后的字串   
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    //就是这句的问题
+                    theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+                    //之前用了unescape()
+                    //才会出现乱码  
+                    console.log(theRequest)
+                }
+            }
+            console.log(theRequest);
+            return theRequest;
+        }
 	</script>
 
 	<script>

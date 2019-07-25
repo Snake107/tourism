@@ -7,6 +7,13 @@ import com.ssm.pojo.ext.ScenceExt;
 
 import java.util.List;
 
+import com.ssm.dto.scence.ScenceDto;
+import com.ssm.pojo.Tags;
+import com.ssm.vo.SearchVo;
+
+
+
+
 /**
  * @author ：c_peizhi
  * @version ：1.0.0
@@ -16,6 +23,7 @@ import java.util.List;
  * @modified By：
  */
 public interface ScenceService {
+
     List<ScenceNavi> getScenceNavi(ScenceNaviParameter scenceNaviParameter);
     /**
      * 首页   查询评分高的前6个景点
@@ -23,4 +31,12 @@ public interface ScenceService {
      */
     List<ScenceExt> selectIndexSixScenceInfo();
 
+
+
+    List<ScenceDto> getAttractions();
+
+    List<ScenceDto> TravelSearch(SearchVo searchVo);
+
+
+    List<Tags> getLabel();
 }

@@ -6,6 +6,10 @@ import com.ssm.pojo.ext.ScenceExt;
 import com.ssm.vo.ScenceNavi;
 
 import java.util.List;
+import com.ssm.dto.scence.ScenceDto;
+import com.ssm.pojo.Tags;
+import com.ssm.vo.SearchVo;
+
 
 /**
  * @author ：c_peizhi
@@ -28,5 +32,13 @@ public interface ScenceMapperExt {
      * @return
      */
     List<ScenceExt> selectIndexSixScenceInfo();
+
+
+
+    List<ScenceDto> getAttractions();
+    List<ScenceDto> TravelSearch(SearchVo searchVo);
+
+    List<Tags> getLabel();
+
 
 }
