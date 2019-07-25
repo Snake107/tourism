@@ -78,7 +78,7 @@
 		<section class="hero_in tours_detail">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>Tour detail page</h1>
+					<h1 class="fadeInUp" id="GoodsName"><span></span></h1>
 				</div>
 				<span class="magnific-gallery">
 					<a href="img/gallery/tour_list_1.jpg" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
@@ -103,107 +103,86 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<section id="description">
-							<h2>Description</h2>
-							<p>Per consequat adolescens ex, cu nibh commune <strong>temporibus vim</strong>, ad sumo viris eloquentiam sed. Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-							<p>Cum et probo menandri. Officiis consulatu pro et, ne sea sale invidunt, sed ut sint <strong>blandit</strong> efficiendi. Atomorum explicari eu qui, est enim quaerendum te. Quo harum viris id. Per ne quando dolore evertitur, pro ad cibo commune.</p>
-							<h3>Instagram photos feed</h3>
-							<div id="instagram-feed" class="clearfix"></div>
+							<!--<h2>描述</h2>-->
+							<!--<p>Cum et probo menandri. Officiis consulatu pro et, ne sea sale invidunt, sed ut sint <strong>blandit</strong> efficiendi. Atomorum explicari eu qui, est enim quaerendum te. Quo harum viris id. Per ne quando dolore evertitur, pro ad cibo commune.</p>-->
+							<!--&lt;!&ndash;<h3>Instagram photos feed</h3>&ndash;&gt;-->
+							<!--&lt;!&ndash;<div id="instagram-feed" class="clearfix"></div>&ndash;&gt;-->
 							<hr>
 
-							<h3>Program <small>(60 minutes)</small></h3>
-							<p>
-								Iudico omnesque vis at, ius an laboramus adversarium. An eirmod doctus admodum est, vero numquam et mel, an duo modo error. No affert timeam mea, legimus ceteros his in. Aperiri honestatis sit at. Eos aeque fuisset ei, case denique eam ne. Augue invidunt has ad, ullum debitis mea ei, ne aliquip dignissim nec.
-							</p>
-							<ul class="cbp_tmtimeline">
-								<li>
-									<time class="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>
-									</time>
-									<div class="cbp_tmicon">
-										1
-									</div>
-									<div class="cbp_tmlabel">
-										<div class="hidden-xs">
-											<img src="img/tour_plan_1.jpg" alt="" class="rounded-circle thumb_visit">
-										</div>
-										<h4>Interior of the cathedral</h4>
-										<p>
-											Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-										</p>
-									</div>
-								</li>
-								<li>
-									<time class="cbp_tmtime" datetime="11:30"><span>2 hours</span><span>11:30</span>
-									</time>
-									<div class="cbp_tmicon">
-										2
-									</div>
-									<div class="cbp_tmlabel">
-										<div class="hidden-xs">
-											<img src="img/tour_plan_2.jpg" alt="" class="rounded-circle thumb_visit">
-										</div>
-										<h4>Statue of Saint Reparata</h4>
-										<p>
-											Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-										</p>
-									</div>
-								</li>
-								<li>
-									<time class="cbp_tmtime" datetime="13:30"><span>1 hour</span><span>13:30</span>
-									</time>
-									<div class="cbp_tmicon">
-										3
-									</div>
-									<div class="cbp_tmlabel">
-										<div class="hidden-xs">
-											<img src="img/tour_plan_3.jpg" alt="" class="rounded-circle thumb_visit">
-										</div>
-										<h4>Huge clock decorated</h4>
-										<p>
-											Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-										</p>
-									</div>
-								</li>
-								<li>
-									<time class="cbp_tmtime" datetime="14:30"><span>2 hours</span><span>14:30</span>
-									</time>
-									<div class="cbp_tmicon">
-										4
-									</div>
-									<div class="cbp_tmlabel">
-										<div class="hidden-xs">
-											<img src="img/tour_plan_4.jpg" alt="" class="rounded-circle thumb_visit">
-										</div>
-										<h4>Vasari's fresco</h4>
-										<p>
-											Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-										</p>
-									</div>
-								</li>
+							<h3>旅游行程 </h3>
+
+							<ul class="cbp_tmtimeline" id="TravelInformation">
+								<!--<li>-->
+									<!--<time class="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>-->
+									<!--</time>-->
+									<!--<div class="cbp_tmicon">-->
+										<!--1-->
+									<!--</div>-->
+									<!--<div class="cbp_tmlabel">-->
+										<!--<div class="hidden-xs">-->
+											<!--<img src="img/tour_plan_1.jpg" alt="" class="rounded-circle thumb_visit">-->
+										<!--</div>-->
+										<!--<h4>Interior of the cathedral</h4>-->
+										<!--<p>-->
+											<!--Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.-->
+										<!--</p>-->
+									<!--</div>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<time class="cbp_tmtime" datetime="11:30"><span>2 hours</span><span>11:30</span>-->
+									<!--</time>-->
+									<!--<div class="cbp_tmicon">-->
+										<!--2-->
+									<!--</div>-->
+									<!--<div class="cbp_tmlabel">-->
+										<!--<div class="hidden-xs">-->
+											<!--<img src="img/tour_plan_2.jpg" alt="" class="rounded-circle thumb_visit">-->
+										<!--</div>-->
+										<!--<h4>Statue of Saint Reparata</h4>-->
+										<!--<p>-->
+											<!--Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.-->
+										<!--</p>-->
+									<!--</div>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<time class="cbp_tmtime" datetime="13:30"><span>1 hour</span><span>13:30</span>-->
+									<!--</time>-->
+									<!--<div class="cbp_tmicon">-->
+										<!--3-->
+									<!--</div>-->
+									<!--<div class="cbp_tmlabel">-->
+										<!--<div class="hidden-xs">-->
+											<!--<img src="img/tour_plan_3.jpg" alt="" class="rounded-circle thumb_visit">-->
+										<!--</div>-->
+										<!--<h4>Huge clock decorated</h4>-->
+										<!--<p>-->
+											<!--Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.-->
+										<!--</p>-->
+									<!--</div>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<time class="cbp_tmtime" datetime="14:30"><span>2 hours</span><span>14:30</span>-->
+									<!--</time>-->
+									<!--<div class="cbp_tmicon">-->
+										<!--4-->
+									<!--</div>-->
+									<!--<div class="cbp_tmlabel">-->
+										<!--<div class="hidden-xs">-->
+											<!--<img src="img/tour_plan_4.jpg" alt="" class="rounded-circle thumb_visit">-->
+										<!--</div>-->
+										<!--<h4>Vasari's fresco</h4>-->
+										<!--<p>-->
+											<!--Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.-->
+										<!--</p>-->
+									<!--</div>-->
+								<!--</li>-->
 							</ul>
 							<hr>
-							<p>Mea appareat omittantur eloquentiam ad, nam ei quas <strong>oportere democritum</strong>. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-							<div class="row">
-								<div class="col-lg-6">
-									<ul class="bullets">
-										<li>Dolorem mediocritatem</li>
-										<li>Mea appareat</li>
-										<li>Prima causae</li>
-										<li>Singulis indoctum</li>
-									</ul>
-								</div>
-								<div class="col-lg-6">
-									<ul class="bullets">
-										<li>Timeam inimicus</li>
-										<li>Oportere democritum</li>
-										<li>Cetero inermis</li>
-										<li>Pertinacia eum</li>
-									</ul>
-								</div>
-							</div>
+
 							<!-- /row -->
-							
+
 							<hr>
-							<h3>Location</h3>
+							<h3>地图</h3>
 							<div id="map" class="map map_single add_bottom_30"></div>
 							<!-- End Map -->
 						</section>
@@ -311,9 +290,9 @@
 					
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail booking">
-							<div class="price">
-								<span>45$ <small>person</small></span>
-								<div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
+							<div class="price" id="price">
+								<!--<span> <small>人民币</small></span>-->
+								<!--<div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>-->
 							</div>
 
 							<div class="form-group">
@@ -333,8 +312,8 @@
 									</div>
 								</div>
 							</div>
-							<a href="cart-1.html" class="btn_1 full-width purchase">Purchase</a>
-							<a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
+							<a href="cart-1.html" class="btn_1 full-width purchase">购买</a>
+							<a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i>添加到购物车</a>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 						<ul class="share-buttons">
@@ -539,7 +518,62 @@
 			});
 		});
 
-		getRequest()
+		var tmpe = getRequest();
+		var id = tmpe.id;
+		var type = tmpe.type;
+		var data = "";
+        //刚进来获取景点信息
+        $.ajax({
+            //提交数据的类型 POST GET
+            type:"POST",
+            //提交的网址
+            url:"Description/getGoodsDescription",
+			//返回数据的格式
+            dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+            contentType:"application/json",
+            async:true,
+            //成功返回之后调用的函数
+            data:JSON.stringify({
+                "id":id,
+                "type":type
+            }),
+            //成功返回之后调用的函数
+            success: function (returnData) {
+                console.log(returnData);
+				var src  = "";
+				src += "<span>"+returnData.price+" <small>人民币</small></span>";
+				src += "<div class=\"score\"><span>一共有<em>"+returnData.totalNumber+"评论过 </em></span><strong>"+returnData.mark+"</strong></div>";
+				$("#price").append(src);
+
+				data += "<h2>描述</h2>\n" +
+                    "\t\t\t\t\t\t\t<p>"+returnData.description+"</p>\n";
+
+				$("#description").prepend(data)
+				data = "";
+				$.each(returnData.schedule,function (index, item) {
+                    data +="<li>\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"cbp_tmicon\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t "+item.num+" \n" +
+                        "\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"cbp_tmlabel\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"hidden-xs\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\"img/tour_plan_1.jpg\" alt=\"\" class=\"rounded-circle thumb_visit\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<h4>"+item.title+"</h4>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<p>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t "+item.siteDescription+" \n" +
+                        "\t\t\t\t\t\t\t\t\t\t</p>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t</li>";
+                });
+				$("#TravelInformation").append(data);
+            },
+            //调用出错执行的函数
+            error: function(responseText){
+                //请求出错处理
+                console.error(responseText);
+            }
+        });
         //获取url的值
         function getRequest() {
             var url = window.location.search; //获取url中"?"符后的字串   
@@ -555,7 +589,6 @@
                     console.log(theRequest)
                 }
             }
-            console.log(theRequest);
             return theRequest;
         }
 	</script>
@@ -591,6 +624,9 @@
 
 		//查询评论
 		var discuss = function(){
+            var tmpe = getRequest();
+            var id = tmpe.id;
+            var type = tmpe.type;
 			$.ajax({
 				type: "POST",
 				url: "discuss/getlist",
@@ -599,8 +635,8 @@
 				data: JSON.stringify({
 					"limit":"100",
 					"start":"0",
-					"commodityId":"1",
-					"bigType":"1"
+					"commodityId":id,
+					"bigType":type
 				}),
 
 				success: function (data) {

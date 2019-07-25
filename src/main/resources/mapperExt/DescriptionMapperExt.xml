@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.DescriptionDao" >
+
+    <resultMap id="getGoodsDescription" type="com.ssm.dto.description.GoodsDescription" >
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="scence_name" property="scenceName" />
+        <result column="picture" property="picture"  />
+        <result column="description" property="description"  />
+        <result column="price" property="price"  />
+        <result column="p_type" property="pType"  />
+        <result column="views" property="views"  />
+        <result column="mark" property="mark"  />
+        <result column="total_number" property="totalNumber"  />
+        <result column="country" property="country"  />
+        <result column="province" property="province"  />
+        <result column="city" property="city"  />
+        <collection property="schedule" ofType="com.ssm.pojo.TSchedule">
+            <result column="timelong" property="timelong" />
+            <result column="time" property="time" />
+            <result column="num" property="num" />
+            <result column="title" property="title" />
+            <result column="Site_description" property="SiteDescription" />
+        </collection>
+    </resultMap>
+
+    <select id="GoodsDescription" parameterType="com.ssm.vo.GoodsDataVo" resultMap="getGoodsDescription">
+
+
+SELECT
+	ccc.*,
+	t_sch.timelong,
+	t_sch.time,
+	t_sch.num,
+	t_sch.title,
+	t_sch.description as Site_description
+FROM
+	(
+		SELECT
+			aaa.*
+		FROM
+			(
+				SELECT
+					information.*, t_ci.country,
+					t_ci.province,
+					t_ci.city
+				FROM
+					(
+						SELECT
+
+							t_sc.id,
+							t_sc.scence_name,
+							t_sc.picture,
+							t_sc.description,
+							t_sc.price,
+							t_sc.p_type,
+							t_sc.views,
+							t_sc.mark,
+							count(t_comm.id) AS total_number
+						FROM
+							t_scence t_sc
+						INNER JOIN t_tags t_ta
+						LEFT JOIN t_comment AS t_comm ON t_comm.commodity_id = t_sc.id
+						WHERE
+							t_sc.tags_id = t_ta.id
+						GROUP BY
+							t_sc.id,
+							t_sc.p_type
+					) AS information
+				INNER JOIN t_city t_ci
+				WHERE
+					t_ci.id = information.id
+			) AS aaa where aaa.id = #{id} and aaa.p_type = #{type}
+	) AS ccc
+LEFT JOIN  t_schedule t_sch on ccc.id = t_sch.commodity_id
+AND ccc.p_type = t_sch.big_type
+
+    </select>
+
+</mapper>
