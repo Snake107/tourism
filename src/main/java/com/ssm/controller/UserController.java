@@ -73,7 +73,7 @@ public class UserController {
      */
     @RequestMapping(value = "loginUser",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     @ResponseBody
-    public boolean loginUser(@RequestBody UserExt userExt, HttpServletRequest request, HttpServletResponse response){
+    public boolean loginUser(@RequestBody UserExt userExt, HttpServletRequest request,HttpServletResponse response){
         // 把密码通过 MD5 加密,和数据库进行判断
         String password = userExt.getPassword();
         byte[] bytes = password.getBytes();
@@ -102,7 +102,7 @@ public class UserController {
             // 设置登录凭证,把 user1 对象放入 session 中
             request.getSession().setAttribute("user",user1);
             User user = (User) request.getSession().getAttribute("user");
-            System.out.println(user.getPassword()+user.getEmail());
+            System.out.println(request.getSession().getId());
             return true;
         }
         return false;

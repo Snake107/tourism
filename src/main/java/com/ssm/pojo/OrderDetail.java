@@ -32,12 +32,6 @@ public class OrderDetail {
     private Double commodityMoney;
 
     /**
-     * 商品折扣价格
-     */
-    @Column(name = "commodity_discount_money")
-    private Double commodityDiscountMoney;
-
-    /**
      * 商品数量
      */
     @Column(name = "commodity_num")
@@ -127,24 +121,6 @@ public class OrderDetail {
      */
     public void setCommodityMoney(Double commodityMoney) {
         this.commodityMoney = commodityMoney;
-    }
-
-    /**
-     * 获取商品折扣价格
-     *
-     * @return commodity_discount_money - 商品折扣价格
-     */
-    public Double getCommodityDiscountMoney() {
-        return commodityDiscountMoney;
-    }
-
-    /**
-     * 设置商品折扣价格
-     *
-     * @param commodityDiscountMoney 商品折扣价格
-     */
-    public void setCommodityDiscountMoney(Double commodityDiscountMoney) {
-        this.commodityDiscountMoney = commodityDiscountMoney;
     }
 
     /**

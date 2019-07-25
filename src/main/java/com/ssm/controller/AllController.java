@@ -33,6 +33,7 @@ public class AllController {
     public List<SearchDto> search(@RequestBody SearchVo searchVo){
         System.out.println(searchVo.toString());
         System.out.println("==========================");
+
         return allService.searchAll(searchVo);
     }
 

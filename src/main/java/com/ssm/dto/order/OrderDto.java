@@ -8,7 +8,9 @@ package com.ssm.dto.order;
  * @date 2019/7/5 10:01
  */
 
-public class DtoOrder {
+public class OrderDto {
+    //订单ID
+    private Integer id;
     private Integer userId;
     private String tradeNo;
     private String outTradeNo;
@@ -20,16 +22,24 @@ public class DtoOrder {
     private String arrivalDate;
     private String departureDate;
 
-    public DtoOrder() {
+    public OrderDto() {
     }
 
-    public DtoOrder(String tradeNo, String outTradeNo, String orderName, double totalMoney, double invoiceAmount, String payTime) {
+    public OrderDto(String tradeNo, String outTradeNo, String orderName, double totalMoney, double invoiceAmount, String payTime) {
         this.tradeNo = tradeNo;
         this.outTradeNo = outTradeNo;
         this.orderName = orderName;
         this.totalMoney = totalMoney;
         this.invoiceAmount = invoiceAmount;
         this.payTime = payTime;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDepartureDate() {

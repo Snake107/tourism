@@ -12,10 +12,10 @@ public class Order {
     private Integer id;
 
     /**
-     * 订单ID
+     * 订单号
      */
     @Column(name = "order_id")
-    private Integer orderId;
+    private String orderId;
 
     /**
      * 用户id
@@ -51,21 +51,21 @@ public class Order {
     }
 
     /**
-     * 获取订单ID
+     * 获取订单号
      *
-     * @return order_id - 订单ID
+     * @return order_id - 订单号
      */
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
     /**
-     * 设置订单ID
+     * 设置订单号
      *
-     * @param orderId 订单ID
+     * @param orderId 订单号
      */
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId == null ? null : orderId.trim();
     }
 
     /**
