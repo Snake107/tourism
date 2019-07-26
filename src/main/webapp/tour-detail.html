@@ -183,7 +183,8 @@
 
 							<hr>
 							<h3>地图</h3>
-							<div id="map" class="map map_single add_bottom_30"></div>
+<!--							<div id="map" class="map map_single add_bottom_30"></div>-->
+							<div id="allmap" class="map map_single add_bottom_30"></div>
 							<!-- End Map -->
 						</section>
 						<!-- /section -->
@@ -312,8 +313,8 @@
 									</div>
 								</div>
 							</div>
-							<a href="cart-1.html" class="btn_1 full-width purchase">购买</a>
-							<a href="wishlist.html" id="ShoppingCar" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i>添加到购物车</a>
+							<a href="#" class="btn_1 full-width purchase" onclick="addBuyCart()">添加到购物车</a>
+							<a href="wishlist.html" id="ShoppingCar" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i>添加到心愿单</a>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 						<ul class="share-buttons">
@@ -473,10 +474,11 @@
 	<script src="assets/validate.js"></script>
 	
 	<!-- Map -->
-	<script src="http://ditu.google.cn/maps/api/js"></script>
-	<script src="js/map_single_tour.js"></script>
-	<script src="js/infobox.js"></script>
-	
+<!--	<script src="http://ditu.google.cn/maps/api/js"></script>-->
+<!--	<script src="js/map_single_tour.js"></script>-->
+<!--	<script src="js/infobox.js"></script>-->
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zDqmG3CQkiKUB2Bjl6Truw8MhV0klRck"></script>
+
 	<!-- DATEPICKER  -->
 	<script>
 	$(function() {
@@ -522,6 +524,11 @@
 		var id = tmpe.id;
 		var type = tmpe.type;
 		var data = "";
+		var price ="";
+		var num = 1;
+		var senceName ="";
+		var senceCountry ="";
+		var senceCity="";
         //刚进来获取景点信息
         $.ajax({
             //提交数据的类型 POST GET
@@ -539,7 +546,15 @@
             }),
             //成功返回之后调用的函数
             success: function (returnData) {
-                console.log(returnData);
+                console.log("-----"+returnData.country);
+                console.log("-----"+returnData.city);
+                console.log("-----"+returnData.scenceName);
+
+                price=returnData.price;
+				senceName=returnData.scenceName;
+				senceCountry=returnData.country;
+				senceCity=returnData.city;
+                console.log(price);
 				var src  = "";
 				src += "<span>"+returnData.price+" <small>人民币</small></span>";
 				src += "<div class=\"score\"><span>一共有<em>"+returnData.totalNumber+"评论过 </em></span><strong>"+returnData.mark+"</strong></div>";
@@ -567,6 +582,9 @@
                         "\t\t\t\t\t\t\t\t</li>";
                 });
 				$("#TravelInformation").append(data);
+
+				getMap(senceCountry,senceName);
+				$("#GoodsName").html("<span>"+senceName+"</span>")
             },
             //调用出错执行的函数
             error: function(responseText){
@@ -574,23 +592,71 @@
                 console.error(responseText);
             }
         });
-        //获取url的值
-        function getRequest() {
-            var url = window.location.search; //获取url中"?"符后的字串   
-            var theRequest = new Object();
-            if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for(var i = 0; i < strs.length; i ++) {
-                    //就是这句的问题
-                    theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
-                    //之前用了unescape()
-                    //才会出现乱码  
-                    console.log(theRequest)
-                }
-            }
-            return theRequest;
-        }
+
+		function getMap(country,sence) {
+			// 百度地图API功能
+			var map = new BMap.Map("allmap");  // 创建Map实例
+			map.centerAndZoom(country,15);      // 初始化地图,用城市名设置地图中心点
+			setTimeout(function(){
+				map.setZoom(14);
+			}, 2000);  //2秒后放大到14级
+			map.enableScrollWheelZoom(true);
+			var local = new BMap.LocalSearch(map, {
+				renderOptions:{map: map}
+			});
+			local.search(sence);
+		}
+
+
+		//获取url的值
+		function getRequest() {
+			var url = window.location.search; //获取url中"?"符后的字串   
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for(var i = 0; i < strs.length; i ++) {
+					//就是这句的问题
+					theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+					//之前用了unescape()
+					//才会出现乱码  
+					console.log(theRequest)
+				}
+			}
+			return theRequest;
+		}
+		function addBuyCart() {
+			$.ajax({
+				//提交数据的类型 POST GET
+				type:"POST",
+				//提交的网址
+				url:"buycart/addShopCart",
+				//返回数据的格式
+				dataType: "json",//"xml", "html", "script", "json", "jsonp", "text".
+				contentType:"application/json",
+				async:true,
+				//成功返回之后调用的函数
+				data:JSON.stringify({
+					"commodityId":id,
+					"commodityName":senceName,
+					"bigType":type,
+					"originalCost":price,
+					"commodityNum":num
+				}),
+				//成功返回之后调用的函数
+				success: function (returnData) {
+					console.log(returnData);
+					location.href="cart-1.html"
+
+				},
+				//调用出错执行的函数
+				error: function(responseText){
+					//请求出错处理
+					console.error(responseText);
+				}
+			});
+		}
+
 	</script>
 
 	<script>

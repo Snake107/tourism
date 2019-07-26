@@ -1,5 +1,6 @@
 package com.ssm.service.impl;
 
+import com.ssm.dao.mapping.ShoppingCartMapper;
 import com.ssm.dao.mappingExt.ShoppingCartMapperExt;
 import com.ssm.dto.shopcart.ShopCartDto;
 import com.ssm.pojo.ShoppingCart;
@@ -20,6 +21,9 @@ public class ShopCartServiceImpl implements ShopCartService {
     @Autowired
     ShoppingCartMapperExt shoppingCartMapperExt;
 
+    @Autowired
+    ShoppingCartMapper shoppingCartMapper;
+
     @Override
     public ShopCartDto getShopCartById(Integer userId) {
         return shoppingCartMapperExt.getShopCartById(userId);
@@ -33,10 +37,10 @@ public class ShopCartServiceImpl implements ShopCartService {
         }
         return false;
     }
-
+    //？？？？？？？？？？？？？？？？？
     @Override
     public List<ShoppingCart> getAllShopCartByUserId(Integer id) {
-        return shoppingCartMapperExt.getAllShopCartByUserId(id);
+        return shoppingCartMapper.selectByExample(id);
     }
 
     @Override
