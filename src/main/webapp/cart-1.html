@@ -137,23 +137,23 @@
 								</tr>
 							</thead>
 							<tbody id="tab1">
-								<tr>
-									<td>
-										<div class="thumb_cart">
-											<img src="http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg" alt="Image">
-										</div>
-										<span class="item_cart">Persius delenit has cu</span>
-									</td>
-									<td>
-										0%
-									</td>
-									<td>
-										<strong>24,71$</strong>
-									</td>
-									<td class="options" style="width:5%; text-align:center;">
-										<a href="#"><i class="icon-trash"></i></a>
-									</td>
-								</tr>
+<!--								<tr>-->
+<!--									<td>-->
+<!--										<div class="thumb_cart">-->
+<!--											<img src="http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg" alt="Image">-->
+<!--										</div>-->
+<!--										<span class="item_cart">Persius delenit has cu</span>-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										0%-->
+<!--									</td>-->
+<!--									<td>-->
+<!--										<strong>24,71$</strong>-->
+<!--									</td>-->
+<!--									<td class="options" style="width:5%; text-align:center;">-->
+<!--										<a href="#"><i class="icon-trash"></i></a>-->
+<!--									</td>-->
+<!--								</tr>-->
 
 							</tbody>
 						</table>
@@ -180,7 +180,7 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail">
 							<div id="total_cart">
-								总价格 <span class="float-right" id="total_money" >69.00$</span>
+								总价格 <span class="float-right" id="total_money" >0.00$</span>
 							</div>
 							<ul class="cart_details">
 								<li>From <span>02-11-18</span></li>
@@ -242,38 +242,41 @@
 					success:function(data){
 						console.log(data)
 						//请求成功时处理
-                        payObj=data
-						var value ="";
-						$.each(data.shoppingCartList,function (i, item){
-							value += "<tr>\n" +
-									"\t\t\t\t\t\t\t\t\t<td>\n" +
-									"\t\t\t\t\t\t\t\t\t\t<div class=\"thumb_cart\">\n" +
-									"\t\t\t\t\t\t\t\t\t\t\t<img src=\"http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg\" alt=\"Image\">\n" +
-									"\t\t\t\t\t\t\t\t\t\t</div>\n" +
-									"\t\t\t\t\t\t\t\t\t\t<span class=\"item_cart\">"+item.commodityName+"</span>\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td>\n" +
-									"\t\t\t\t\t\t\t\t\t\t"+(item.discount*10)+"%\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td>\n" +
-									"\t\t\t\t\t\t\t\t\t\t<input name= \'"+item.id+"\' type=\"number\" value='"+item.commodityNum+"' onchange='changeShopCart(this.name)'/>\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td>\n" +
-									"\t\t\t\t\t\t\t\t\t\t"+item.originalCost+"$\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td>\n" +
-									"\t\t\t\t\t\t\t\t\t\t<strong>"+(item.originalCost*item.commodityNum)+"$</strong>\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t\t<td class=\"options\" style=\"width:5%; text-align:center;\">\n" +
-									"\t\t\t\t\t\t\t\t\t\t<a name=\'"+item.id+"\' href=\"#\" onclick='delById(this.name)'><i class=\"icon-trash\"  ></i></a>\n" +
-									"\t\t\t\t\t\t\t\t\t</td>\n" +
-									"\t\t\t\t\t\t\t\t</tr>"
-						})
-						$("#tab1").html(value);
-                        var  totalMoney = data.totalOriginalMoney+"$";
-                        console.log(totalMoney)
-                        console.log($("#total_money").text())
-                        $("#total_money").text(totalMoney)
+						if(data!=null){
+							payObj=data
+							var value ="";
+							$.each(data.shoppingCartList,function (i, item){
+								value += "<tr>\n" +
+										"\t\t\t\t\t\t\t\t\t<td>\n" +
+										"\t\t\t\t\t\t\t\t\t\t<div class=\"thumb_cart\">\n" +
+										"\t\t\t\t\t\t\t\t\t\t\t<img src=\"http://via.placeholder.com/150x150/ccc/fff/thumb_cart_1.jpg\" alt=\"Image\">\n" +
+										"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+										"\t\t\t\t\t\t\t\t\t\t<span class=\"item_cart\">"+item.commodityName+"</span>\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t\t<td>\n" +
+										"\t\t\t\t\t\t\t\t\t\t"+(item.discount*10)+"%\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t\t<td>\n" +
+										"\t\t\t\t\t\t\t\t\t\t<input name= \'"+item.id+"\' type=\"number\" value='"+item.commodityNum+"' onchange='changeShopCart(this.name)'/>\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t\t<td>\n" +
+										"\t\t\t\t\t\t\t\t\t\t"+item.originalCost+"$\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t\t<td>\n" +
+										"\t\t\t\t\t\t\t\t\t\t<strong>"+(item.originalCost*item.commodityNum)+"$</strong>\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t\t<td class=\"options\" style=\"width:5%; text-align:center;\">\n" +
+										"\t\t\t\t\t\t\t\t\t\t<a name=\'"+item.id+"\' href=\"#\" onclick='delById(this.name)'><i class=\"icon-trash\"  ></i></a>\n" +
+										"\t\t\t\t\t\t\t\t\t</td>\n" +
+										"\t\t\t\t\t\t\t\t</tr>"
+							})
+							$("#tab1").html(value);
+							var  totalMoney = data.totalOriginalMoney+"$";
+							console.log(totalMoney)
+							console.log($("#total_money").text())
+							$("#total_money").text(totalMoney)
+
+						}
 
 					},
 

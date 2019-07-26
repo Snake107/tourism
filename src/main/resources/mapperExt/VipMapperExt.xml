@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.mappingExt.VipMapperExt" >
+  <resultMap id="BaseResultMap" type="com.ssm.pojo.Vip" >
+
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="vip_meal" property="vipMeal" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+
+    user_id, vip_meal, start_time, end_time
+  </sql>
+  <insert id="addVip" parameterType="com.ssm.dto.vip.VipDto">
+    insert into t_vip (<include refid="Base_Column_List"/>) values (#{userId},#{vipMeal},#{startTime},#{endTime})
+  </insert>
+</mapper>

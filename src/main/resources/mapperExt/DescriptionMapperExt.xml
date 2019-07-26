@@ -53,6 +53,7 @@ FROM
 
 							t_sc.id,
 							t_sc.scence_name,
+							t_sc.city_id,
 							t_sc.picture,
 							t_sc.description,
 							t_sc.price,
@@ -72,7 +73,7 @@ FROM
 					) AS information
 				INNER JOIN t_city t_ci
 				WHERE
-					t_ci.id = information.id
+					t_ci.id = information.city_id
 			) AS aaa where aaa.id = #{id} and aaa.p_type = #{type}
 	) AS ccc
 LEFT JOIN  t_schedule t_sch on ccc.id = t_sch.commodity_id
