@@ -226,7 +226,7 @@ public class BuycarController {
         AlipayUtil.setReturn_url(request);
         response.setContentType("text/html;charset=utf-8");
         try {
-            response.getWriter().print("<script >alert('支付成功');location='../index-7.html'</script>");
+            response.getWriter().print("<script >alert('支付成功');location='../index.html'</script>");
         } catch (IOException e) {
             e.printStackTrace();
         }
