@@ -57,7 +57,7 @@ from t_shopping_cart  where user_id = #{id}
   <select id="ifMember"  resultType="double">
    SELECT  CASE
 	WHEN (SELECT b.vip_discount from t_vip a,t_vip_meal b where  a.vip_meal = b.id and   a.user_id = #{id} and a.end_time >= NOW() )  is null THEN
-		0
+		1
 	ELSE
 		0.9
 END as vip_discount;

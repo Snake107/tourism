@@ -40,10 +40,10 @@ public class AlipayUtil {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlCFy7iGcStP/0slC7AlcbrcyRZkwh/NZ7ViTMsPS5ne5vqFshSbUtn53NAW771VdZNs5GamZNnPT+VT7AbXJv57g2qBlSr7w5Jh2EgK+Nr9FrCWvrSSHsoWbN4mOFvARWFK0hBklaj8yMjoNPQBvqkSl2CrMVXU+hmh2UiVuYWc4jdzPvFwJ5CSUyBDeVgICoOQYWUsjDP7y7Q2ObA2SbJdrnJZt59JQ+NenlCSIiPLFL9pOj7yVQ3FvtlQW0ZzlduTXoZO0pRoi+l4k8QBpJlO4TUBRuWqI7S+6R3c4yz9JMaRQjTapeKBmXrgTqjYBtjqJV9iQRMTTNlfiqtNGTwIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "             http://47b9h6.natappfree.cc/tourism/buycart/notifyUrl";
+    public static String notify_url = "             http://huwahi.natappfree.cc/tourism/buycart/notifyUrl";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "            http://47b9h6.natappfree.cc/tourism/buycart/returnUrl";
+    public static String return_url = "            http://huwahi.natappfree.cc/tourism/buycart/returnUrl";
 
     // 签名方式
     public static String sign_type = "RSA2";

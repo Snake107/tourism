@@ -63,11 +63,12 @@ public class BuycarController {
 
 
     @RequestMapping(value = "/getShopCartById",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public Object getShopCartById(@RequestBody User user,HttpServletRequest request){
+    public Object getShopCartById(HttpServletRequest request){
+
+        User user = (User) request.getSession().getAttribute("user");
         ShopCartDto shopCartById = shopCartService.getShopCartById(user.getId());
-        User user1 = (User) request.getSession().getAttribute("user");
         //System.out.println("============"+user1);
-        userId = user1.getId();
+        userId = user.getId();
         //System.out.println("0000000000000"+shopCartById);
         //设置订单详情
         if (shopCartById != null){
@@ -82,7 +83,7 @@ public class BuycarController {
                 detailDtos.add(orderDetailDto);
                 // System.out.println("=========="+orderDetailDto);
             }
-            ShopCartDto totalMoney = shopCartService.getTotalMoney(user1.getId());
+            ShopCartDto totalMoney = shopCartService.getTotalMoney(user.getId());
             double totalOriginalMoney = totalMoney.getTotalOriginalMoney();
             shopCartById.setTotalOriginalMoney(totalOriginalMoney);
             orderDetailDtos=detailDtos;
@@ -116,7 +117,7 @@ public class BuycarController {
         //List<ShoppingCart> allShopCartByUserId = shopCartService.getAllShopCartByUserId(user.getId());
 
         Example example = new Example(ShoppingCart.class);
-        example.and().andEqualTo("userId",1);
+        example.and().andEqualTo("userId",userId);
         List<ShoppingCart> allShopCartByUserId = shoppingCartMapper.selectByExample(example);
         allShopCartByUserId.forEach(content -> System.out.println(content));
 
